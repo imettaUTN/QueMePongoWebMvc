@@ -16,10 +16,9 @@
 
     <h1><fmt:message key="heading"/></h1>
     <p><fmt:message key="greeting"/> </p>
-     <p><fmt:message key="login"/> </p>    
     <br>    
    
-    <form:form method="post"  commandName="LoginModel">
+    <form:form method="post"  commandName="UserModel">
 	  
 	    <table >
 		    <tr>
