@@ -85,7 +85,7 @@ public class Usuario extends BaseClassData implements Serializable{
 				
 				prenda.setGuardarropa(guardarropa);
 				this.disminuirDisponible();
-				prenda.guardar();
+				//prenda.guardar();
 				return true;
 				
 			}else 
@@ -96,7 +96,7 @@ public class Usuario extends BaseClassData implements Serializable{
 		}else
 		{
 			prenda.setGuardarropa(guardarropa);
-			prenda.guardar();
+			//prenda.guardar();
 			return true;
 		}	
 		

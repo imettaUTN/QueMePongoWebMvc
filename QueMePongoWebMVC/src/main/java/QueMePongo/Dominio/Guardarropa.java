@@ -18,7 +18,6 @@ public class Guardarropa extends BaseClassData implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "CodGuardarropa")
@@ -51,12 +50,13 @@ public class Guardarropa extends BaseClassData implements Serializable{
 		this.administrador = admin;
 	}
 	
+	/*
 	public void guardar(){
 		
-		//JPAUtil trn = new JPAUtil();
-		//trn.transaccion().guardarropa().persistir(this);
+		JPAUtil trn = new JPAUtil();
+		trn.transaccion().guardarropa().persistir(this);
 	}
-	
+	*/
 
 	/*
 	
@@ -158,7 +158,7 @@ public class Guardarropa extends BaseClassData implements Serializable{
 			}
 		}
 		
-		System.out.print("Valor de Capa M�xima: " + capaMaxima + "\n");
+		System.out.print("Valor de Capa Máxima: " + capaMaxima + "\n");
 		
 		switch(capaMaxima){
 		
@@ -175,9 +175,10 @@ public class Guardarropa extends BaseClassData implements Serializable{
 							for(Object prendaCapaUno:capaUno){
 								
 								Sugerencia sugerencia = new Sugerencia();
+								Prenda p = new Prenda();
 								
 								sugerencia.prendasSugeridas.put(14, (Prenda) prendaCapaCuatro);
-								sugerencia.prendasSugeridas.put(13, (Prenda) prendaCapaTres);
+						 		sugerencia.prendasSugeridas.put(13, (Prenda) prendaCapaTres);
 								sugerencia.prendasSugeridas.put(12, (Prenda) prendaCapaDos);
 								sugerencia.prendasSugeridas.put(11, (Prenda) prendaCapaUno);
 							
@@ -258,7 +259,7 @@ public class Guardarropa extends BaseClassData implements Serializable{
 		
 		}else {
 		
-			System.out.print("Lista Vac�a. \n");
+			System.out.print("Lista Vacía. \n");
 			sugerencias.clear();
 			return sugerencias;
 		
@@ -343,7 +344,7 @@ public class Guardarropa extends BaseClassData implements Serializable{
 		
 		}else {
 		
-			System.out.print("Lista Vac�a. \n");
+			System.out.print("Lista Vacía. \n");
 			sugerencias.clear();
 			return sugerencias;
 		
@@ -353,6 +354,7 @@ public class Guardarropa extends BaseClassData implements Serializable{
 	public List<Sugerencia> recomendacion(int tempMinima, int tempMaxima) throws IOException, SQLException{
 		
 		System.out.print("Recomendacion. \n");
+		int nivelDeAbrigo = 2; //Ver
 		int cantidadMaximaSugerencias=5;
 		int sugerenciasSeleccionadas=0;
 		
@@ -377,26 +379,49 @@ public class Guardarropa extends BaseClassData implements Serializable{
 					for(Prenda prendaCalzado:calzados){
 						
 							Sugerencia suger = new Sugerencia();
-							//suger.setParteSuperior3(sugerenciaSup.getParteSuperior3());
-							suger.prendasSugeridas.put(13, sugerenciaSup.prendasSugeridas.get(13));
 							
-							//suger.setParteSuperior2(sugerenciaSup.getParteSuperior2());
-							suger.prendasSugeridas.put(12, sugerenciaSup.prendasSugeridas.get(12));
+							// ********************** Categoria Superior **************************** //
 							
-							//suger.setParteSuperior1(sugerenciaSup.getParteSuperior1());
-							suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							if(sugerenciaSup.getMaxCapaSuperior() == 3) {
+							
+								suger.prendasSugeridas.put(13, sugerenciaSup.prendasSugeridas.get(13));
+								suger.prendasSugeridas.put(12, sugerenciaSup.prendasSugeridas.get(12));
+								suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							}	
+							
+							if(sugerenciaSup.getMaxCapaSuperior() == 2) {
+							
+									suger.prendasSugeridas.put(12, sugerenciaSup.prendasSugeridas.get(12));
+									suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							}		
+							
+							if(sugerenciaSup.getMaxCapaSuperior() == 1) {
+								
+									suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							}
 							
 							suger.setMaxCapaSuperior(sugerenciaSup.getMaxCapaSuperior());
 							
-							//suger.setParteInferior1(sugerenciaInf.getParteInferior1());
-							suger.prendasSugeridas.put(21, sugerenciaInf.prendasSugeridas.get(21));
 							
-							//suger.setParteInferior2(sugerenciaInf.getParteInferior2());
-							suger.prendasSugeridas.put(22, sugerenciaInf.prendasSugeridas.get(22));
+							
+							// ********************** Categoria Inferior **************************** //
+							
+							if(sugerenciaInf.getMaxCapaInferior() == 2) {
+							
+								suger.prendasSugeridas.put(22, sugerenciaInf.prendasSugeridas.get(22));
+								suger.prendasSugeridas.put(21, sugerenciaInf.prendasSugeridas.get(21));
+							}
+							
+							if(sugerenciaInf.getMaxCapaInferior() == 1) {
+								
+								suger.prendasSugeridas.put(21, sugerenciaInf.prendasSugeridas.get(21));
+							}
 							
 							suger.setMaxCapaInferior(sugerenciaInf.getMaxCapaInferior());
 							
 							suger.prendasSugeridas.put(31, prendaCalzado);
+							
+							suger.setUsuario(administrador);
 							
 							sugerencias.add(suger);
 					}
@@ -411,6 +436,8 @@ public class Guardarropa extends BaseClassData implements Serializable{
 		sugerenciasFinales.clear();
 		
 		ColoresExcluidos excluidos = new ColoresExcluidos();
+		SugerenciasExcluidas sugerExclu = new SugerenciasExcluidas();
+		
 		for(Sugerencia sugerencia:sugerencias) {
 			
 			Prenda p1 = null;
@@ -459,7 +486,7 @@ public class Guardarropa extends BaseClassData implements Serializable{
 			//Si la combinacion de colores no esta excluida agrego a la lista.
 			if(!excluidos.ejecutar(this.administrador,p1,p2)){
 				
-					if(sugerenciasSeleccionadas <= cantidadMaximaSugerencias) {
+					if(sugerenciasSeleccionadas < cantidadMaximaSugerencias) {
 				
 						sugerenciasColoresExcluidos.add(sugerencia);
 						sugerenciasSeleccionadas++;
@@ -595,7 +622,6 @@ public class Guardarropa extends BaseClassData implements Serializable{
 		return 0;
 	}*/
 	
-	@SuppressWarnings("unused")
 	private boolean EsColorCombinable(String colorPrimario, String colorSecundario) {
 		
 		if(colorPrimario.equals("ROJO")) {
@@ -714,7 +740,6 @@ public class Guardarropa extends BaseClassData implements Serializable{
 	}
 
 */	
-	
 	
 	
 }

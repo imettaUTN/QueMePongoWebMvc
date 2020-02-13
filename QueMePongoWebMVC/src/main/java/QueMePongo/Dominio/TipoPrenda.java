@@ -3,7 +3,6 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 //import Desarrollo.Enumerados.EnumCapa;
-
 import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
@@ -37,7 +36,10 @@ public class TipoPrenda extends BaseClassData implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CodTipoEvento", referencedColumnName = "CodTipoEvento")
 	private TipoEvento tipoEvento;
-
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodCategoria", referencedColumnName = "CodCategoria")
+	private Categoria categoria;
 
 	public int getId() {
 		return CodTipoPrenda;
@@ -85,5 +87,13 @@ public class TipoPrenda extends BaseClassData implements Serializable{
 
 	public void setTipoEvento(TipoEvento tipoEvento) {
 		this.tipoEvento = tipoEvento;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 }

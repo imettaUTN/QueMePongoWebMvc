@@ -2,6 +2,7 @@ package QueMePongo.Dominio;
 import java.io.Serializable;
 
 import javax.persistence.*;
+
 import QueMePongo.Dominio.Enumerados.*;
 import QueMePongo.Repositorio.BaseClassData;
 
@@ -36,15 +37,11 @@ public class Prenda extends BaseClassData implements Serializable{
 	@JoinColumn(name = "CodTipoPrenda", referencedColumnName = "CodTipoPrenda")
 	private TipoPrenda tipoPrenda;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CodCategoria", referencedColumnName = "CodCategoria")
-	private Categoria categoria;
-	
 	@Column(name = "PrendaDisponible")
 	private boolean disponible = true;
 	
-	@Column(name = "CambioNivel")
-	private int CambioNivel; 
+	@Column(name = "CCNivelAbrigo")
+	private int ccNivelDeAbrigo; //Coeficiente Cambio Nivel de Abrigo
 	
 	@Transient
 	private EnumCapa numeroDeCapa;
@@ -52,11 +49,13 @@ public class Prenda extends BaseClassData implements Serializable{
 	@Transient
 	private String urlImagen;
 	
+	/*
 	public void guardar(){
 		
-		//	JPAUtil trn = new JPA@Util();
-		//	trn.transaccion().prenda().persistir(this);
+			JPAUtil trn = new JPAUtil();
+			trn.transaccion().prenda().persistir(this);
 	}
+	*/
 	
 	public int nivelAbrigo() {
 		
@@ -65,9 +64,9 @@ public class Prenda extends BaseClassData implements Serializable{
 		
 		int abrigo = this.tipoPrenda.getNivelAbrigo().getId();
 		
-			if(this.CambioNivel != 0) {
+			if(this.ccNivelDeAbrigo != 0) {
 		
-				abrigo += this.CambioNivel;
+				abrigo += this.ccNivelDeAbrigo;
 			}
 		
 			return abrigo; 
@@ -75,22 +74,22 @@ public class Prenda extends BaseClassData implements Serializable{
 	
 	public boolean esInferior(){
 		
-		return (categoria.getCodCategoria() == 2);
+		return (this.tipoPrenda.getCategoria().getCodCategoria() == 2);
 	}
 	
 	public boolean esSuperior(){
 		
-		return (categoria.getCodCategoria() == 1);
+		return (this.tipoPrenda.getCategoria().getCodCategoria() == 1);
 	}
 	
 	public boolean esAccesorio(){
 		
-		return (categoria.getCodCategoria() == 4);
+		return (this.tipoPrenda.getCategoria().getCodCategoria() == 4);
 	}
 	
 	public boolean esCalzado(){
 		
-		return (categoria.getCodCategoria() == 3);
+		return (this.tipoPrenda.getCategoria().getCodCategoria() == 3);
 	}
 	
 	public void BoquearPrenda() {
@@ -158,11 +157,7 @@ public class Prenda extends BaseClassData implements Serializable{
 	}
 
 	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+		return this.tipoPrenda.getCategoria();
 	}
 
 	public EnumCapa getNumeroDeCapa() {
@@ -190,11 +185,11 @@ public class Prenda extends BaseClassData implements Serializable{
 	}
 
 	public int getCambioNivel() {
-		return CambioNivel;
+		return ccNivelDeAbrigo;
 	}
 
 	public void setCambioNivel(int cambioNivel) {
-		CambioNivel = cambioNivel;
+		ccNivelDeAbrigo = cambioNivel;
 	}
 	
 }

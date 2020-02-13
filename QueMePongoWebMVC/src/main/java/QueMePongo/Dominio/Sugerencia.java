@@ -28,7 +28,7 @@ public class Sugerencia extends BaseClassData implements Serializable{
 	@JoinTable(name="PrendaExclusion", 
 	joinColumns={@JoinColumn(name="CodExclusion", referencedColumnName="CodExclusion")},
 	inverseJoinColumns={@JoinColumn(name="CodPrenda", referencedColumnName="CodPrenda")})
-	private List<Prenda> exclusiones;
+	private List<Prenda> exclusiones = new ArrayList<Prenda>();
 	
 	@Transient
 	HashMap<Integer, Prenda> prendasSugeridas = new HashMap<Integer, Prenda>();
@@ -53,11 +53,16 @@ public class Sugerencia extends BaseClassData implements Serializable{
 	public void AceptarSugerencia(Sugerencia sugerencia) {
 		// TODO: Asignar sugerencia a Evento en formato XML.
 	}
+	
+	/*
 	public void RechazarSugerencia() {
 		
-	//	JPAUtil jpa = new JPAUtil();
-	//	jpa.transaccion().sugerenciaRechaza().persistir(this);
+		JPAUtil jpa = new JPAUtil();
+		this.cargarExclusiones();
+		jpa.transaccion().sugerenciaRechaza().persistir(this);
+		System.out.println("Fin RechazarSugerencia");
 	}
+	*/
 	
 	public int getMaxCapaSuperior(){
 		
@@ -85,70 +90,24 @@ public class Sugerencia extends BaseClassData implements Serializable{
 	
 	public void cargarExclusiones() {
 		
-		Prenda p = new Prenda();
-		p=null;
+		System.out.println("Ingreso a cargarExclusiones.");
 		
-		p = this.prendasSugeridas.get(11);
-		
-		if(p != null) {
-		
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(12);
-		
-		if(p != null) {
+		for(Integer key:this.prendasSugeridas.keySet()) {
 			
+			System.out.println("KEY:"+key);
+			Prenda p = new Prenda();
+			p = this.prendasSugeridas.get(key);
+			System.out.println("Prenda:"+p.getCodPrenda());
 			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(13);
-		
-		if(p != null) {
 			
-			this.exclusiones.add(p);
-			p=null;
 		}
-		
-		p = this.prendasSugeridas.get(14);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(21);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(21);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(31);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(41);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-		}
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }
