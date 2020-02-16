@@ -4,11 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import QueMePongo.Repositorio.BaseClassData;
-
 @Entity
 @Table(name = "Perfil")
-public class Perfil extends BaseClassData implements Serializable{
+public class Perfil  implements Serializable{
 	
 	/**
 	 * 

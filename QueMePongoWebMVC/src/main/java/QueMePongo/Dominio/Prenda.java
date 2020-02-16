@@ -3,11 +3,10 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 import QueMePongo.Dominio.Enumerados.*;
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "Prendas")
-public class Prenda extends BaseClassData implements Serializable{
+public class Prenda  implements Serializable{
 	
 	/**
 	 * 

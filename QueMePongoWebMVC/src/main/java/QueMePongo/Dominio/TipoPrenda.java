@@ -4,11 +4,10 @@ import java.io.Serializable;
 import javax.persistence.*;
 //import Desarrollo.Enumerados.EnumCapa;
 
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "TipoPrenda")
-public class TipoPrenda extends BaseClassData implements Serializable{
+public class TipoPrenda  implements Serializable{
 	
 	/**
 	 * 

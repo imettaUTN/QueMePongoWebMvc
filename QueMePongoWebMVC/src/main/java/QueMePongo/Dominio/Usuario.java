@@ -5,11 +5,10 @@ import java.io.Serializable;
 import java.util.*;
 import javax.persistence.*;
 
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "Usuarios")
-public class Usuario extends BaseClassData implements Serializable{
+public class Usuario  implements Serializable{
 	
 	/**
 	 * 
@@ -29,6 +28,8 @@ public class Usuario extends BaseClassData implements Serializable{
 	@Column(name = "Apellido")
 	private String apellido; 
 	
+	private int codigoPerfil;
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "PrfCod", referencedColumnName = "PrfCod")
 	private Perfil codPerfil;
@@ -184,7 +185,14 @@ public class Usuario extends BaseClassData implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public int getCodigoPerfil() {
+		return codigoPerfil;
+	}
 
+
+	public void setCodigoPerfil(int codigoPerfil) {
+		this.codigoPerfil = codigoPerfil;
+	}
 	public String getNombre() {
 		return nombre;
 	}

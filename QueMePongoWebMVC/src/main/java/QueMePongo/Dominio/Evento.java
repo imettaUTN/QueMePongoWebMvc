@@ -15,11 +15,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "Evento")
-public class Evento extends BaseClassData implements Serializable{
+public class Evento  implements Serializable{
 	
 	/**
 	 * 

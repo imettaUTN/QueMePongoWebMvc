@@ -1,44 +1,71 @@
-<%@ include file="/WEB-INF/views/include.jsp" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ include file="/WEB-INF/views/include.jsp"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <html>
-  <head>
-   <title><fmt:message key="title"/></title></head>
-  <style type="text/css">
-  input{
-    display: block;
-    text-align: right;
-    
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title><fmt:message key="title" /></title>
+<link href="${contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+<style type="text/css">
+body {
+	font-family: verdana, sans-serif;
 }
-  </style>
-  <body>
-  	 <div id="main" style="width: 500px; height: 1000px;background-repeat:no-repeat;background-image:url('https://www.freejpg.com.ar/image-900/22/2247/F100011234-museo_louvre_en_paris_francia.jpg')">
 
-    <h1><fmt:message key="heading"/></h1>
-    <p><fmt:message key="greeting"/> </p>
-    <br>    
-   
-    <form:form method="post"  commandName="UserModel">
-	  
-	    <table >
-		    <tr>
-			    <td>
-			   	 	 <form:label path="">Email</form:label>
-			    	 <form:input path="mail"/>
-			    </td>
-			   </tr>
-			   <tr>
-			    <td>
-			     	 <form:label path="">password</form:label>    
-			   	     <form:password  path="password"/>
-			    </td>
-		    </tr>
-	    </table>    
-    <br>
-  <input type="submit" value="Execute">
-</form:form>
-  </div>
+span.campoConError {
+	color: red;
+}
+</style>
+</head>
+<style type="text/css">
+input {
+	display: block;
+	text-align: right;
+}
+</style>
+<body>
+	<h1>
+		<fmt:message key="heading" />
+	</h1>
+	<p>
+		<fmt:message key="greeting" />
+	</p>
+	<p>
+		<fmt:message key="login" />
+	</p>
+	<br>
+	<form:form method="post" commandName="Usuario">
+		<table>
+			<tbody>
+				<tr>
+					<td>Nombre:</td>
+					<td><input type="text" name="Nombre" class="form-control"></td>
+					<td><form:errors path="nombre" cssClass="campoConError" /></td>
+				</tr>
+				<tr>
+					<td>Apellido:</td>
+					<td><input type="text" name="Apellido" class="form-control"></td>
+					<td><form:errors path="apellido" cssClass="campoConError" /></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" name="Email" class="form-control"></td>
+					<td><form:errors path="email" cssClass="campoConError" /></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="text" name="Password" class="form-control"></td>
+					<td><form:errors path="password" cssClass="campoConError" /></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="submit" value="Execute" /></td>
+				</tr>
+			</tbody>
+		</table>
 
+	</form:form>
 </body>
-
 </html>

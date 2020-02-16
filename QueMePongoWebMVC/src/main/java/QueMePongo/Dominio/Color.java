@@ -1,12 +1,11 @@
 package QueMePongo.Dominio;
 import java.io.Serializable;
 import javax.persistence.*;
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "Colores")
 
-public class Color extends BaseClassData implements Serializable{
+public class Color  implements Serializable{
 	
 	/**
 	 * 

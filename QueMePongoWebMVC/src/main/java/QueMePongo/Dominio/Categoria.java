@@ -3,11 +3,10 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 import org.springframework.transaction.annotation.Transactional;
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "Categoria")
-public class Categoria extends BaseClassData implements Serializable{
+public class Categoria implements Serializable{
 	
 	/**
 	 * 
@@ -34,15 +33,5 @@ public class Categoria extends BaseClassData implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	@Override
-    @Transactional(readOnly = true)
-	public Object buscarPorId(int i) {
-		return this.getEntityManager().find(this.getClass(), i);
-
-	}
-	@Override
-    @Transactional(readOnly = true)
-	public void persistir(Object objeto) {
-		this.getEntityManager().merge((Categoria)objeto);		
-	}
+	
 }

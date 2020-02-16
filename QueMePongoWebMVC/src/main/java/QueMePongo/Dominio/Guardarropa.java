@@ -8,11 +8,10 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.persistence.*;
 
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "Guardarropas")
-public class Guardarropa extends BaseClassData implements Serializable{
+public class Guardarropa  implements Serializable{
 	
 	/**
 	 * 

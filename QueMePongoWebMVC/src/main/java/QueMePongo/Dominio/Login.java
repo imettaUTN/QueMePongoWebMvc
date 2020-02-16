@@ -1,12 +1,11 @@
 package QueMePongo.Dominio;
 import java.io.Serializable;
 import javax.persistence.*;
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "Login")
 
-public class Login extends BaseClassData implements Serializable{
+public class Login implements Serializable{
 	
 	/**
 	 * 
@@ -19,11 +18,11 @@ public class Login extends BaseClassData implements Serializable{
 	private int UserId;
 	
 	@Column(name = "Email")
-	private String Email;
+	private String email;
 
 // encriptar
 	@Column(name = "Password")
-	private String Password;
+	private String password;
 
 	public int getUserId() {
 		return UserId;
@@ -34,19 +33,19 @@ public class Login extends BaseClassData implements Serializable{
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
-	public void setEmail(String email) {
-		Email = email;
+	public void setEmail(String xemail) {
+		email = xemail;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
-	public void setPassword(String password) {
-		Password = password;
+	public void setPassword(String xpassword) {
+		password = xpassword;
 	}
 
 	public static long getSerialversionuid() {

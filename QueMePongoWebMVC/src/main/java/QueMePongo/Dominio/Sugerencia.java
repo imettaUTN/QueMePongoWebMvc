@@ -4,11 +4,10 @@ import java.util.*;
 import javax.persistence.*;
 //import Repositorio.Repositorio;
 
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "Exclusion")
-public class Sugerencia extends BaseClassData implements Serializable{
+public class Sugerencia  implements Serializable{
 	
 	/**
 	 * 

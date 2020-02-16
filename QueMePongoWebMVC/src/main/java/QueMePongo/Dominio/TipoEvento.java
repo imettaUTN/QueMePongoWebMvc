@@ -3,11 +3,10 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import QueMePongo.Repositorio.BaseClassData;
 
 @Entity
 @Table(name = "TipoEvento")
-public class TipoEvento extends BaseClassData implements Serializable{
+public class TipoEvento  implements Serializable{
 	
 	/**
 	 * 
