@@ -45,7 +45,7 @@
 			<td>Password:</td>
 			<td>
 		
-			<input type="text" name="Password" class="form-control"></td>
+			<input type="password" name="Password" class="form-control"></td>
 			<td><form:errors path="password" cssClass="campoConError"/></td>
 			</tr>
 		  <tr>
