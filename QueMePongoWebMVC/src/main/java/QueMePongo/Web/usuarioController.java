@@ -1,6 +1,7 @@
 package QueMePongo.Web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -29,7 +30,7 @@ public class usuarioController {
  }
 
  @RequestMapping(method = RequestMethod.POST)
- public String RegistrarUsuario(@Valid Usuario user, BindingResult result)
+ public String RegistrarUsuario(@Valid Model user, BindingResult result)
  {
      if (result.hasErrors()) {
          return "usuario";
