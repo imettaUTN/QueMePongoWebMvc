@@ -14,6 +14,7 @@ import QueMePongo.Validaciones.ValidadorUsuario;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,20 +29,22 @@ public class usuarioController {
  }
 
  @RequestMapping(method = RequestMethod.POST)
- public String RegistrarUsuario(@Valid Usuario user, BindingResult result) throws Exception
+ public String RegistrarUsuario(@Valid Usuario user, BindingResult result,HttpServletRequest request) throws Exception
  {
      if (result.hasErrors()) {
          return "usuario";
      }
-     Perfil perfil ;
-     if(user.getCodigoPerfil() == 0) {
-    	 perfil = new Perfil("ADMINISTRADOR",0);
-     }
-     else {
-    	 perfil = new Perfil("NO ADMINISTRADOR",1);
-     }
+     Perfil perfil = null;
+     switch(user.getCodigoPerfil()) {
+     case 1:  perfil = new Perfil("ADMINISTRADOR",1); break;
+     case 2:  perfil = new Perfil("ADMINISTRADOR",2); break;
+     case 3:  perfil = new Perfil("ADMINISTRADOR",3); break;
 
+     }
+    
     user.setCodPerfil(perfil);
+    HttpSession sesion = request.getSession();
+   Login log = (Login) sesion.getAttribute("login");
     user.guardar();
        
      return "redirect:/menu.htm";

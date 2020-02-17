@@ -61,14 +61,14 @@
 		<div id="header">
 			<ul class="nav">
 	
-				<li><a href="/QueMePongoWebMVC/login.htm">Usuario</a>
+				<li><a href="">Usuario</a>
 				   <ul>
-						<li><a href="">Alta Usuario</a></li>
+						<li><a href="/QueMePongoWebMVC/usuario.htm">Alta Usuario</a></li>
 				   </ul>
 				</li>
 				<li><a href="">Guardarropa</a>
 					<ul>
-						<li><a href="">Crear Prendas</a></li>
+						<li><a href="/QueMePongoWebMVC/guardarropa.htm">Crear Prendas</a></li>
 						<li><a href="">ABM Gurdarropa</a></li>						
 					</ul>
 				</li>

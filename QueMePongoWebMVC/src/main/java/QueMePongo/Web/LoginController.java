@@ -13,6 +13,7 @@ import QueMePongo.Dominio.Login;
 import QueMePongo.Validaciones.ValidadorLogin;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -31,19 +32,20 @@ private boolean erorEnCredenciales ;
 
      
     @RequestMapping(method = RequestMethod.POST)
-    public String ValidarLogin(@Valid Login login, BindingResult result)
+    public String ValidarLogin(@Valid Login login, BindingResult result,HttpServletRequest request)
     {
         if (result.hasErrors()) {
             
         	return "redirect:/LoginUser.htm";
         }
 		
-        boolean errorCredenciales = true;
+        boolean errorCredenciales = false;
         if( errorCredenciales) {
           this.setErorEnCredenciales(errorCredenciales);
         	return "redirect:/login.htm";
         }
-       
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("login", login);
         
         return "redirect:/menu.htm";
     }

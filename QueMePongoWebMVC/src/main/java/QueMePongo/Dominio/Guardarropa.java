@@ -8,6 +8,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.persistence.*;
 
+import QueMePongo.DAO.JPAUtil;
+
 
 @Entity
 @Table(name = "Guardarropas")
@@ -43,6 +45,11 @@ public class Guardarropa  implements Serializable{
 	private List<Usuario> usuariosCompartiendo = new ArrayList<Usuario>(); 
 	*/
 	
+	public void AgregarUsuarioAdm( String emailUsuario){
+		JPAUtil trn = new JPAUtil();
+		Usuario  admin = trn.transaccion().usuario().buscarPorId(emailUsuario);
+	    this.setAdministrador(admin);
+	}
 	public void crearGuardarropa(String descripcion, boolean compartido, Usuario admin){
 		
 		this.descripcion = descripcion;
@@ -52,8 +59,8 @@ public class Guardarropa  implements Serializable{
 	
 	public void guardar(){
 		
-		//JPAUtil trn = new JPAUtil();
-		//trn.transaccion().guardarropa().persistir(this);
+		JPAUtil trn = new JPAUtil();
+		trn.transaccion().guardarropa().persistir(this);
 	}
 	
 

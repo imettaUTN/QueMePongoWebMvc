@@ -33,9 +33,6 @@ input {
 	<p>
 		<fmt:message key="greeting" />
 	</p>
-	<p>
-		<fmt:message key="login" />
-	</p>
 	<br>
 	<form:form method="post" commandName="Usuario">
 		<table>
