@@ -9,7 +9,7 @@ public class ValidadorUsuario implements Validator {
 
 @Override
 public boolean supports(Class<?> clazz) {
-	return Login.class.equals(clazz); // clase del bean al que da soporte este validador
+	return Usuario.class.equals(clazz); // clase del bean al que da soporte este validador
 
 }
 
@@ -18,7 +18,7 @@ public void validate(Object target, Errors errors) {
 	// TODO Auto-generated method stub
 	//Usuario user = (Usuario) target;
 	
-	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "field.email.required", 
+	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mail", "field.mail.required", 
 			"El email es obligatoria");
 	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "field.password.required", 
 			"El password es obligatorio");

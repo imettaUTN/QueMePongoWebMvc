@@ -21,6 +21,7 @@
 	</style>
   </head>
   <style type="text/css">
+  
   input{
     display: block;
     text-align: right;
@@ -48,7 +49,9 @@
 			<input type="password" name="Password" class="form-control"></td>
 			<td><form:errors path="password" cssClass="campoConError"/></td>
 			</tr>
+			<tr><td id="msj" style="color:red">${ErorMessage}</td></tr>
 		  <tr>
+		  <tr><td></td></tr>		  
 	<td colspan="3"><input type="submit" value="Execute" /></td>
 	</tr>
 	</tbody>

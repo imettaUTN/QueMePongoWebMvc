@@ -11,6 +11,11 @@ public class Perfil  implements Serializable{
 	/**
 	 * 
 	 */
+	Perfil(){}
+	public Perfil(String desc, int codPerf){
+		this.setCodigoPerfil(codPerf);
+		this.setDescripcion(desc);
+	}
 	private static final long serialVersionUID = 1L;
 	
 	@Id

@@ -20,35 +20,50 @@ import org.apache.commons.logging.LogFactory;
 @Controller
 @RequestMapping(value="/login.htm")
 public class LoginController {
+	
 	/** Logger for this class and subclasses */
     protected final Log logger = LogFactory.getLog(getClass());
      @InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.setValidator(new ValidadorLogin()); // registramos el validador
     }
+private boolean erorEnCredenciales ;
 
+     
     @RequestMapping(method = RequestMethod.POST)
     public String ValidarLogin(@Valid Login login, BindingResult result)
     {
         if (result.hasErrors()) {
-            return "login";
+            
+        	return "redirect:/LoginUser.htm";
         }
 		
-        /*Login login = new Login();
-        login.setPassword(loginModel.getPassword());
-        login.setEmail(loginModel.getMail());
-        login.persistir(login);*/
+        boolean errorCredenciales = true;
+        if( errorCredenciales) {
+          this.setErorEnCredenciales(errorCredenciales);
+        	return "redirect:/login.htm";
+        }
+       
         
         return "redirect:/menu.htm";
     }
     @RequestMapping(method = RequestMethod.GET)
     protected ModelAndView GetModelToView(HttpServletRequest request) throws ServletException {
      ModelAndView modelAndView = new ModelAndView("LoginUser");
+if(this.isErorEnCredenciales()) {
+	modelAndView.addObject("ErorMessage", "Usuario o contraseña no validos");
 
+}
     	Login login = new Login();
     	modelAndView.addObject(login);
         return modelAndView;
     }
+	public boolean isErorEnCredenciales() {
+		return erorEnCredenciales;
+	}
+	public void setErorEnCredenciales(boolean erorEnCredenciales) {
+		this.erorEnCredenciales = erorEnCredenciales;
+	}
     
 
 }

@@ -19,13 +19,6 @@ span.campoConError {
 	color: red;
 }
 </style>
-<script type="text/javascript">
- function cambiarPerfil(val){
-	   var s = document.getElementById("optradio").innerHTML;
-alert(val);
-alert(s);
- }
-</script>
 </head>
 <style type="text/css">
 input {
@@ -59,8 +52,8 @@ input {
 				</tr>
 				<tr>
 					<td>Email:</td>
-					<td><input type="text" name="Email" class="form-control"></td>
-					<td><form:errors path="email" cssClass="campoConError" /></td>
+					<td><input type="text" name="mail" class="form-control"></td>
+					<td><form:errors path="mail" cssClass="campoConError" /></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
@@ -69,17 +62,11 @@ input {
 					<td><form:errors path="password" cssClass="campoConError" /></td>
 				</tr>
 				<tr>
-					<td>Administrador</td>
-					<td><input type="hidden" name="codigoPerfil"
-						class="form-control"></td>
-				</tr>
-				<tr>
-					<td>¿Usuario Administrador?</td>				
-					<td><label class="radio-inline"><input type="radio"
-							name="optradio" value ="Si" onchange="cambiarPerfil(this.value)" checked >Si</label></td>
-					<td><label class="radio-inline"><input type="radio"
-							name="optradio" value="No" >No</label></td>
-
+					<td>¿Usuario Administrador?</td>
+					<td><select name="codigoPerfil">
+							<option value="0">Si</option>
+							<option value="1">No</option>
+					</select></td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="submit" value="Execute" /></td>

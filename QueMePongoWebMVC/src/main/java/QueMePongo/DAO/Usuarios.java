@@ -13,6 +13,9 @@ public class Usuarios extends Repositorio{
 	}
 	
 	public void persistir(Usuario usuario){
+		if(usuario.getCodPerfil().getCodigoPerfil() == 1) {
+			usuario.setPrendasDisponibles(60);
+		}
 		
 		em.getTransaction().begin();
 		em.merge(usuario);

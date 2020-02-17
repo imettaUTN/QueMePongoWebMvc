@@ -1,9 +1,17 @@
 package QueMePongo.Dominio;
 import java.io.Serializable;
+import java.security.Key;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 //import java.io.IOException;
 //import Desarrollo.ObjetosValor.UbicacionEvento;
 import java.util.*;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import javax.persistence.*;
+
+import QueMePongo.DAO.JPAUtil;
 
 
 @Entity
@@ -14,6 +22,8 @@ public class Usuario  implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	//ver de cambiar de lugar, no deberia estar en la clase
+	private static String  ENCRYPT_KEY="QueMePongoTPDDS";
 
 	@Id
 	@Column(name = "UsrCod")
@@ -50,9 +60,10 @@ public class Usuario  implements Serializable{
 	@Transient
 	private List<Evento> eventos = new ArrayList<Evento>();
 	
-	/*public void guardar(){
+	public void guardar() throws Exception{
 		
 		JPAUtil trn = new JPAUtil();
+		this.setPassword(Usuario.encript(this.getPassword()));
 		trn.transaccion().usuario().persistir(this);
 	}
 	
@@ -60,7 +71,7 @@ public class Usuario  implements Serializable{
 		
 		JPAUtil trn = new JPAUtil();
 		return trn.transaccion().usuario().buscarPorId(id);
-	}*/
+	}
 	
 	/*
 	public void CargarEvento(LocalDate fecha, UbicacionEvento ubicacion, TipoEvento tipo) throws Exception{
@@ -169,6 +180,31 @@ public class Usuario  implements Serializable{
 		}
 	}
 
+	 
+	private static String encript(String text) throws Exception {  
+	    Key aesKey = new SecretKeySpec(ENCRYPT_KEY.getBytes(), "AES");
+	 
+	    Cipher cipher = Cipher.getInstance("AES");
+	    cipher.init(Cipher.ENCRYPT_MODE, aesKey);
+	 
+	    byte[] encrypted = cipher.doFinal(text.getBytes());
+	         
+	    return Base64.getEncoder().encodeToString(encrypted);
+	    }
+	 
+	private static String decrypt(String encrypted) throws Exception {
+	    byte[] encryptedBytes=Base64.getDecoder().decode( encrypted.replace("\n", "") );
+	         
+	    Key aesKey = new SecretKeySpec(ENCRYPT_KEY.getBytes(), "AES");
+	 
+	    Cipher cipher = Cipher.getInstance("AES");
+	    cipher.init(Cipher.DECRYPT_MODE, aesKey);
+	 
+	    String decrypted = new String(cipher.doFinal(encryptedBytes));
+	         
+	    return decrypted;
+	    }
+	 
 
 	public String getCodigoUsuario() {
 		return codigoUsuario;
