@@ -301,14 +301,16 @@ public class Usuario  implements Serializable{
 		return this.getGuardarropas().get(index);
 	}
 	
-	public boolean validaLogin() throws SQLException{
+	public boolean validaLogin() throws Exception{
 		
 		boolean valida = true;
+		String claveEncriptada=this.encript(this.getPassword());
+		
 		Connection cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");
 		CallableStatement miSentencia = cn.prepareCall("{call SP_VALIDAR_LOGIN(?,?,?)}");
 		
 		miSentencia.setString(1, this.getCodigoUsuario());
-		miSentencia.setString(2, this.getPassword());
+		miSentencia.setString(2, claveEncriptada);
 		miSentencia.registerOutParameter(3, Types.BIT);
 		
 		miSentencia.execute();
