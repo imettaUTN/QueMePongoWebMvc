@@ -51,7 +51,9 @@
 			</tr>
 			<tr><td id="msj" style="color:red">${ErorMessage}</td></tr>
 		  <tr>
-		  <tr><td></td></tr>		  
+		  <tr><td>&nbsp; </td></tr>
+		  <tr><td><a href="/QueMePongoWebMVC/usuario.htm">Registrarme</a></td></tr>		  
+		  <tr><td>&nbsp; </td></tr>
 	<td colspan="3"><input type="submit" value="Execute" /></td>
 	</tr>
 	</tbody>

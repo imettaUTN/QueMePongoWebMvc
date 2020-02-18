@@ -18,6 +18,8 @@ public void validate(Object target, Errors errors) {
 	// TODO Auto-generated method stub
 	//Usuario user = (Usuario) target;
 	
+	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "codigoUsuario", "field.codigoUsuario.required", 
+			"El codigo de Usuario es obligatoria");
 	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mail", "field.mail.required", 
 			"El email es obligatoria");
 	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "field.password.required", 

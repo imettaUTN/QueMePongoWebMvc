@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import QueMePongo.Dominio.Login;
+import QueMePongo.Dominio.Usuario;
 import QueMePongo.Validaciones.ValidadorLogin;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,54 +19,60 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
 @Controller
-@RequestMapping(value="/login.htm")
+@RequestMapping(value = "/login.htm")
 public class LoginController {
-	
+
 	/** Logger for this class and subclasses */
-    protected final Log logger = LogFactory.getLog(getClass());
-     @InitBinder
-    protected void initBinder(WebDataBinder binder) {
-        binder.setValidator(new ValidadorLogin()); // registramos el validador
-    }
-private boolean erorEnCredenciales ;
+	protected final Log logger = LogFactory.getLog(getClass());
 
-     
-    @RequestMapping(method = RequestMethod.POST)
-    public String ValidarLogin(@Valid Login login, BindingResult result,HttpServletRequest request)
-    {
-        if (result.hasErrors()) {
-            
-        	return "redirect:/LoginUser.htm";
-        }
-		
-        boolean errorCredenciales = false;
-        if( errorCredenciales) {
-          this.setErorEnCredenciales(errorCredenciales);
-        	return "redirect:/login.htm";
-        }
-        HttpSession sesion = request.getSession();
-        sesion.setAttribute("login", login);
-        
-        return "redirect:/menu.htm";
-    }
-    @RequestMapping(method = RequestMethod.GET)
-    protected ModelAndView GetModelToView(HttpServletRequest request) throws ServletException {
-     ModelAndView modelAndView = new ModelAndView("LoginUser");
-if(this.isErorEnCredenciales()) {
-	modelAndView.addObject("ErorMessage", "Usuario o contraseña no validos");
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.setValidator(new ValidadorLogin()); // registramos el validador
+	}
 
-}
-    	Login login = new Login();
-    	modelAndView.addObject(login);
-        return modelAndView;
-    }
+	private boolean errorEnCredenciales;
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String ValidarLogin(@Valid Login login, BindingResult result, HttpServletRequest request) throws Exception {
+		if (result.hasErrors()) {
+
+			return "redirect:/login.htm";
+		}
+
+		this.setErrorEnCredenciales(login.ValidarLogin());
+		if (this.isErorEnCredenciales()) {
+			
+			return "redirect:/login.htm";
+		}
+		logger.info("Guardando login en sesion");
+		HttpSession sesion = request.getSession();
+		Usuario user = new Usuario();
+		user = user.recuperar(login.getEmail());
+		sesion.setAttribute("Usuario", user);
+
+		return "redirect:/menu.htm";
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	protected ModelAndView GetModelToView(HttpServletRequest request) throws ServletException {
+		ModelAndView modelAndView = new ModelAndView("LoginUser");
+		if (this.isErorEnCredenciales()) {
+			modelAndView.addObject("ErorMessage", "Usuario o contraseña no validos");
+
+		}
+		Login login = new Login();
+		modelAndView.addObject(login);
+		return modelAndView;
+	}
+
 	public boolean isErorEnCredenciales() {
-		return erorEnCredenciales;
+		return errorEnCredenciales;
 	}
-	public void setErorEnCredenciales(boolean erorEnCredenciales) {
-		this.erorEnCredenciales = erorEnCredenciales;
+
+	public void setErrorEnCredenciales(boolean erorEnCredenciales) {
+		this.errorEnCredenciales = erorEnCredenciales;
 	}
-    
 
 }

@@ -28,7 +28,6 @@ public class Usuario  implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	//ver de cambiar de lugar, no deberia estar en la clase
-	private static String  ENCRYPT_KEY="QueMePongoTPDDS";
 
 	@Id
 	@Column(name = "UsrCod")
@@ -68,7 +67,7 @@ public class Usuario  implements Serializable{
 	public void guardar() throws Exception{
 		
 		JPAUtil trn = new JPAUtil();
-		this.setPassword(Usuario.encript(this.getPassword()));
+		this.setPassword(Comman.encript(this.getPassword()));
 		trn.transaccion().usuario().persistir(this);
 	}
 	
@@ -186,29 +185,7 @@ public class Usuario  implements Serializable{
 	}
 
 	 
-	private static String encript(String text) throws Exception {  
-	    Key aesKey = new SecretKeySpec(ENCRYPT_KEY.getBytes(), "AES");
-	 
-	    Cipher cipher = Cipher.getInstance("AES");
-	    cipher.init(Cipher.ENCRYPT_MODE, aesKey);
-	 
-	    byte[] encrypted = cipher.doFinal(text.getBytes());
-	         
-	    return Base64.getEncoder().encodeToString(encrypted);
-	    }
-	 
-	private static String decrypt(String encrypted) throws Exception {
-	    byte[] encryptedBytes=Base64.getDecoder().decode( encrypted.replace("\n", "") );
-	         
-	    Key aesKey = new SecretKeySpec(ENCRYPT_KEY.getBytes(), "AES");
-	 
-	    Cipher cipher = Cipher.getInstance("AES");
-	    cipher.init(Cipher.DECRYPT_MODE, aesKey);
-	 
-	    String decrypted = new String(cipher.doFinal(encryptedBytes));
-	         
-	    return decrypted;
-	    }
+	
 	 
 
 	public String getCodigoUsuario() {
@@ -301,21 +278,5 @@ public class Usuario  implements Serializable{
 		return this.getGuardarropas().get(index);
 	}
 	
-	public boolean validaLogin() throws Exception{
-		
-		boolean valida = true;
-		String claveEncriptada=this.encript(this.getPassword());
-		
-		Connection cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");
-		CallableStatement miSentencia = cn.prepareCall("{call SP_VALIDAR_LOGIN(?,?,?)}");
-		
-		miSentencia.setString(1, this.getCodigoUsuario());
-		miSentencia.setString(2, claveEncriptada);
-		miSentencia.registerOutParameter(3, Types.BIT);
-		
-		miSentencia.execute();
-		valida = miSentencia.getBoolean(3);
-		
-		return valida;
-	}
+	
 }

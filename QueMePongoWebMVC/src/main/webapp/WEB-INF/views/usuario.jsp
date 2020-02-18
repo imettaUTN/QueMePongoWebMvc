@@ -37,6 +37,11 @@ input {
 	<form:form method="post" commandName="Usuario">
 		<table>
 			<tbody>
+			    <tr>
+					<td>codigo usuario:</td>
+					<td><input type="text" name="codigoUsuario" class="form-control"></td>
+					<td><form:errors path="codigoUsuario" cssClass="campoConError" /></td>
+				</tr>
 				<tr>
 					<td>Nombre:</td>
 					<td><input type="text" name="Nombre" class="form-control"></td>
@@ -61,8 +66,11 @@ input {
 				<tr>
 					<td>¿Usuario Administrador?</td>
 					<td><select name="codigoPerfil">
-							<option value="0">Si</option>
-							<option value="1">No</option>
+						
+							<option value="1">Administrador</option>
+							<option value="2">Publico</option>
+							<option value="3">Privado</option>
+							
 					</select></td>
 				</tr>
 				<tr>

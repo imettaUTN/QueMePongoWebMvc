@@ -36,8 +36,8 @@ public class GuardarropaController {
 	         return "redirect:/guardarropa";
 	     }
 	   HttpSession sesion = request.getSession();
-	   Login log = (Login) sesion.getAttribute("login");
-	   guard.AgregarUsuarioAdm(log.getEmail());
+	   Usuario user = (Usuario) sesion.getAttribute("Usuario");
+	   guard.setAdministrador(user);
 	   guard.guardar(); 
 	   return "redirect:/menu.htm";
 	 }

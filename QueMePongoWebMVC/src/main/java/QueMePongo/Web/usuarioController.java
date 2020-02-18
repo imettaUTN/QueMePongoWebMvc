@@ -37,14 +37,14 @@ public class usuarioController {
      Perfil perfil = null;
      switch(user.getCodigoPerfil()) {
      case 1:  perfil = new Perfil("ADMINISTRADOR",1); break;
-     case 2:  perfil = new Perfil("ADMINISTRADOR",2); break;
-     case 3:  perfil = new Perfil("ADMINISTRADOR",3); break;
+     case 2:  perfil = new Perfil("PUBLICO",2); break;
+     case 3:  perfil = new Perfil("PRIVADO",3); break;
 
      }
     
     user.setCodPerfil(perfil);
-    HttpSession sesion = request.getSession();
-   Login log = (Login) sesion.getAttribute("login");
+	HttpSession sesion = request.getSession();
+	sesion.setAttribute("Usuario", user);
     user.guardar();
        
      return "redirect:/menu.htm";

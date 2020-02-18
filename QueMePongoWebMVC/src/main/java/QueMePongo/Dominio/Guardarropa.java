@@ -44,12 +44,6 @@ public class Guardarropa  implements Serializable{
 	@JoinColumn(name="UsrCod")
 	private List<Usuario> usuariosCompartiendo = new ArrayList<Usuario>(); 
 	*/
-	
-	public void AgregarUsuarioAdm( String emailUsuario){
-		JPAUtil trn = new JPAUtil();
-		Usuario  admin = trn.transaccion().usuario().buscarPorId(emailUsuario);
-	    this.setAdministrador(admin);
-	}
 	public void crearGuardarropa(String descripcion, boolean compartido, Usuario admin){
 		
 		this.descripcion = descripcion;
