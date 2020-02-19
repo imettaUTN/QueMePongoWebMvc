@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import QueMePongo.DAO.JPAUtil;
+
 @Entity
 @Table(name = "Perfil")
 public class Perfil  implements Serializable{
@@ -40,7 +42,7 @@ public class Perfil  implements Serializable{
 		this.descripcion = descripcion;
 	}
 	
-	/*public void guardar(){
+	public void guardar(){
 		
 		JPAUtil trn = new JPAUtil();
 		trn.transaccion().perfil().persistir(this);
@@ -50,5 +52,5 @@ public class Perfil  implements Serializable{
 		
 		JPAUtil trn = new JPAUtil();
 		return trn.transaccion().perfil().buscarPorId(id);
-	}*/
+	}
 }

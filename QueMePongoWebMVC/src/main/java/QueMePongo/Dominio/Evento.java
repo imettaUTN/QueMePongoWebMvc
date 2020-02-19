@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import QueMePongo.DAO.JPAUtil;
+
 
 @Entity
 @Table(name = "Evento")
@@ -75,6 +77,10 @@ public class Evento  implements Serializable{
 	//private InvokerGestorEvento invoker;
 	//private LocalDate fechaAlta;
 	
+	public List<Sugerencia> getSugerencias() {
+		return sugerencias;
+	}
+
 	/*
 	public ServidorColaDeEventos getServidorCola() {
 		return servidorCola;
@@ -84,12 +90,19 @@ public class Evento  implements Serializable{
 		this.servidorCola = servidorCola;
 	}
 	*/
+	public void AgregarSugerenciaAEvento(Sugerencia sug) {
+		this.sugerencias.add(sug);
+	}
 
 	public void guardar() {
 		
-		//JPAUtil trn = new JPAUtil();
-	//	trn.transaccion().evento().persistir(this);
+		JPAUtil trn = new JPAUtil();
+		trn.transaccion().evento().persistir(this);
 	}
+	public static Evento BuscarEvento(int idEvento) {
+		JPAUtil trn = new JPAUtil();
+    return trn.transaccion().evento().buscarPorId(idEvento);				
+ 	}
 	
 	public EstadoEvento getEstado() {
 		return estado;

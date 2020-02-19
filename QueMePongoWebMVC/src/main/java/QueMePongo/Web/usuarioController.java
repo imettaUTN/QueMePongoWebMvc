@@ -1,7 +1,13 @@
 package QueMePongo.Web;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -9,15 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import QueMePongo.Dominio.*;
+import QueMePongo.Dominio.Perfil;
+import QueMePongo.Dominio.Usuario;
 import QueMePongo.Validaciones.ValidadorUsuario;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 @Controller
 @RequestMapping(value="/usuario.htm")
 public class usuarioController {

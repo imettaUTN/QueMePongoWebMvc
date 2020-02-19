@@ -64,7 +64,7 @@ input {
 					<td><form:errors path="password" cssClass="campoConError" /></td>
 				</tr>
 				<tr>
-					<td>¿Usuario Administrador?</td>
+					<td>Tipo usuario</td>
 					<td><select name="codigoPerfil">
 						
 							<option value="1">Administrador</option>

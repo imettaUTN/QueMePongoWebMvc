@@ -16,8 +16,8 @@ public class SugerenciasExcluidas {
 		CallableStatement miSentencia = cn.prepareCall("{call SP_COMBINACION_PRENDA_EXCLUIDA(?,?,?,?,?,?,?,?,?,?,?,?)}");
 		
 		miSentencia.setString(1, usuario.getCodigoUsuario());
-		miSentencia.setInt(1, sugerencia.getMaxCapaSuperior());
-		miSentencia.setInt(1, sugerencia.getMaxCapaInferior());
+		miSentencia.setInt(2, sugerencia.getMaxCapaSuperior());
+		miSentencia.setInt(3, sugerencia.getMaxCapaInferior());
 		miSentencia.setInt(4, sugerencia.prendasSugeridas.get(11).getCodPrenda());
 		miSentencia.setInt(5, sugerencia.prendasSugeridas.get(12).getCodPrenda());
 		miSentencia.setInt(6, sugerencia.prendasSugeridas.get(13).getCodPrenda());

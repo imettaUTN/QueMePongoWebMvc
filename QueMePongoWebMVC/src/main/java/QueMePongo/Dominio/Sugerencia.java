@@ -2,6 +2,8 @@ package QueMePongo.Dominio;
 import java.io.Serializable;
 import java.util.*;
 import javax.persistence.*;
+
+import QueMePongo.DAO.JPAUtil;
 //import Repositorio.Repositorio;
 
 
@@ -27,14 +29,23 @@ public class Sugerencia  implements Serializable{
 	@JoinTable(name="PrendaExclusion", 
 	joinColumns={@JoinColumn(name="CodExclusion", referencedColumnName="CodExclusion")},
 	inverseJoinColumns={@JoinColumn(name="CodPrenda", referencedColumnName="CodPrenda")})
-	private List<Prenda> exclusiones;
+	private List<Prenda> exclusiones = new ArrayList<Prenda>();
 	
 	@Transient
 	HashMap<Integer, Prenda> prendasSugeridas = new HashMap<Integer, Prenda>();
+	private List<Prenda> listaPrendasSugeridas ;
 	
 	@Transient
 	private int maxCapaSuperior;
 	
+	public List<Prenda> getListaPrendasSugeridas() {
+		return listaPrendasSugeridas;
+	}
+
+	public void setListaPrendasSugeridas(List<Prenda> listaPrendasSugeridas) {
+		this.listaPrendasSugeridas = listaPrendasSugeridas;
+	}
+
 	@Transient
 	private int maxCapaInferior;
 	
@@ -49,13 +60,15 @@ public class Sugerencia  implements Serializable{
 		IdSugerencia = idSugerencia;
 	}
 
-	public void AceptarSugerencia(Sugerencia sugerencia) {
+	public void AceptarSugerencia() {
 		// TODO: Asignar sugerencia a Evento en formato XML.
 	}
 	public void RechazarSugerencia() {
 		
-	//	JPAUtil jpa = new JPAUtil();
-	//	jpa.transaccion().sugerenciaRechaza().persistir(this);
+		JPAUtil jpa = new JPAUtil();
+		this.cargarExclusiones();
+		jpa.transaccion().sugerenciaRechaza().persistir(this);
+		System.out.println("Fin RechazarSugerencia");
 	}
 	
 	public int getMaxCapaSuperior(){
@@ -82,72 +95,47 @@ public class Sugerencia  implements Serializable{
 		return motivoDeRechazo;
 	}
 	
+	public void setMotivoDeRechazo(int motivoDeRechazo) {
+		this.motivoDeRechazo = motivoDeRechazo;
+	}
+
 	public void cargarExclusiones() {
+		this.exclusiones = converMapToList();		
+	}
+	
+     public List<Prenda> converMapToList(){
 		
-		Prenda p = new Prenda();
-		p=null;
-		
-		p = this.prendasSugeridas.get(11);
-		
-		if(p != null) {
-		
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(12);
-		
-		if(p != null) {
+	
+		for(Integer key:this.prendasSugeridas.keySet()) {
+			//System.out.println("KEY:"+key);
+			Prenda p  = this.prendasSugeridas.get(key);
+			//System.out.println("Prenda:"+p.getCodPrenda());
+			this.listaPrendasSugeridas.add(p);
 			
-			this.exclusiones.add(p);
-			p=null;
 		}
-		
-		p = this.prendasSugeridas.get(13);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(14);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(21);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(21);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(31);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-			p=null;
-		}
-		
-		p = this.prendasSugeridas.get(41);
-		
-		if(p != null) {
-			
-			this.exclusiones.add(p);
-		}
+		return this.getListaPrendasSugeridas();
+	}
+	
+	public void RecostruirSugerenciasMap(String codigosPrendas) {
+		for(String codigoPrenda : codigosPrendas.split(",")) {
+			if(! codigoPrenda.contains("C")) {
+				 Prenda	prend = Prenda.buscarPorCodigo(Integer.valueOf(codigoPrenda));
+				 this.prendasSugeridas.put(prend.getCodPrenda(), prend);	
+			}			
+		}		
+	}
+	
+	public void RecostruirSugerenciasMap() {
+		for(Prenda prend : this.getListaPrendasSugeridas()) {
+				 this.prendasSugeridas.put(prend.getCodPrenda(), prend);	
+		}		
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }

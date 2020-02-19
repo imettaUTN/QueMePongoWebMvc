@@ -36,7 +36,10 @@ public class TipoPrenda  implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CodTipoEvento", referencedColumnName = "CodTipoEvento")
 	private TipoEvento tipoEvento;
-
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CodCategoria", referencedColumnName = "CodCategoria")
+	private Categoria categoria;
 
 	public int getId() {
 		return CodTipoPrenda;
@@ -64,6 +67,22 @@ public class TipoPrenda  implements Serializable{
 
 	public TipoTela getTipoTela() {
 		return tipoTela;
+	}
+
+	public int getCodTipoPrenda() {
+		return CodTipoPrenda;
+	}
+
+	public void setCodTipoPrenda(int codTipoPrenda) {
+		CodTipoPrenda = codTipoPrenda;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	public void setTipoTela(TipoTela tipoTela) {

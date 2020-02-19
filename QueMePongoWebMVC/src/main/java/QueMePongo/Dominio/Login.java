@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.Types;
 
 import javax.persistence.*;
+
+import QueMePongo.Web.Modelos.Comman;
 @Entity
 @Table(name = "Login")
 
@@ -58,7 +60,7 @@ public class Login implements Serializable{
 	public boolean ValidarLogin() throws Exception{
 			
 			boolean valida = true;
-			String claveEncriptada=Comman.encript(this.getPassword());
+			String claveEncriptada=Comman.encrypt(this.getPassword());
 			
 			Connection cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");
 			CallableStatement miSentencia = cn.prepareCall("{call SP_VALIDAR_LOGIN(?,?,?)}");

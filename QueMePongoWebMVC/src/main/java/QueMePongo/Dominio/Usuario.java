@@ -12,6 +12,7 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.persistence.*;
 
 import QueMePongo.DAO.JPAUtil;
+import QueMePongo.Web.Modelos.Comman;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -67,7 +68,7 @@ public class Usuario  implements Serializable{
 	public void guardar() throws Exception{
 		
 		JPAUtil trn = new JPAUtil();
-		this.setPassword(Comman.encript(this.getPassword()));
+		this.setPassword(Comman.encrypt(this.getPassword()));
 		trn.transaccion().usuario().persistir(this);
 	}
 	
@@ -184,9 +185,6 @@ public class Usuario  implements Serializable{
 		}
 	}
 
-	 
-	
-	 
 
 	public String getCodigoUsuario() {
 		return codigoUsuario;
@@ -278,5 +276,20 @@ public class Usuario  implements Serializable{
 		return this.getGuardarropas().get(index);
 	}
 	
+	public boolean validaLogin() throws SQLException{
+		
+		boolean valida = true;
+		Connection cn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QUEMEPONGO","ROMERO","Cris01");
+		CallableStatement miSentencia = cn.prepareCall("{call SP_VALIDAR_LOGIN(?,?,?)}");
+		
+		miSentencia.setString(1, this.getCodigoUsuario());
+		miSentencia.setString(2, this.getPassword());
+		miSentencia.registerOutParameter(3, Types.BIT);
+		
+		miSentencia.execute();
+		valida = miSentencia.getBoolean(3);
+		
+		return valida;
+	}
 	
 }
