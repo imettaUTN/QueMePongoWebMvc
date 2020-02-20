@@ -38,6 +38,8 @@ public class Evento  implements Serializable{
 	@Column(name = "FechaEvento")
 	private LocalDateTime fechaEvento; //Para cuando es el evento.
 	
+	private String fecha;
+	
 	@Column(name = "TempMinEvt")
 	private int temperaturaMinima;
 	
@@ -195,5 +197,13 @@ public class Evento  implements Serializable{
 
 	public void setLongitud(float longitud) {
 		this.longitud = longitud;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 }

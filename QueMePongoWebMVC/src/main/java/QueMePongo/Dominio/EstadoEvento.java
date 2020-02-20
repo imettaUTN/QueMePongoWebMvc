@@ -21,6 +21,13 @@ public class EstadoEvento  implements Serializable{
 	@Column(name = "Descripcion")
 	private String descripcion;
 	
+	public EstadoEvento() {};
+	public EstadoEvento(int id, String desc) {
+		this.setDescripcion(desc);
+		this.setId(id);
+	}
+	
+	
 	public int getId() {
 		return id;
 	}
