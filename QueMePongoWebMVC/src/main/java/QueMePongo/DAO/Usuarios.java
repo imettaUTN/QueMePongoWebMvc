@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import Desarrollo.Evento;
+import Desarrollo.Usuario;
 import QueMePongo.Dominio.*;
 public class Usuarios extends Repositorio{
 		
@@ -34,9 +37,11 @@ public class Usuarios extends Repositorio{
 	public List<Evento> eventos(Usuario usuario){
 		
 		String codUsuario = usuario.getCodigoUsuario();
-		List<Evento> eventos = new ArrayList<>();
-		Query query = em.createQuery("SELECT E FROM Evento E");
+		List<Evento> eventos = new ArrayList<Evento>();
+		Query query = em.createQuery("SELECT E FROM Evento E WHERE E.usuario = :usuario");
+		query.setParameter("usuario", usuario);
 		eventos = query.getResultList();
+	
 		return eventos;
 	}
 }
