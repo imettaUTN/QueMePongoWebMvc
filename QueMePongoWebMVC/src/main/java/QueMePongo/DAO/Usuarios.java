@@ -1,6 +1,9 @@
 package QueMePongo.DAO;
-import javax.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import QueMePongo.Dominio.*;
 public class Usuarios extends Repositorio{
 		
@@ -26,5 +29,14 @@ public class Usuarios extends Repositorio{
 		
 		JPAUtil trn = new JPAUtil();
 		return trn.transaccion().usuario().buscarPorId(id);
+	}
+	
+	public List<Evento> eventos(Usuario usuario){
+		
+		String codUsuario = usuario.getCodigoUsuario();
+		List<Evento> eventos = new ArrayList<>();
+		Query query = em.createQuery("SELECT E FROM Evento E");
+		eventos = query.getResultList();
+		return eventos;
 	}
 }
