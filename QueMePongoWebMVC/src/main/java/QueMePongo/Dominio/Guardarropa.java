@@ -349,6 +349,14 @@ public class Guardarropa  implements Serializable{
 							
 							// ********************** Categoria Superior **************************** //
 							
+							if(sugerenciaSup.getMaxCapaSuperior() == 4) {
+								
+								suger.prendasSugeridas.put(14, sugerenciaSup.prendasSugeridas.get(14));
+								suger.prendasSugeridas.put(13, sugerenciaSup.prendasSugeridas.get(13));
+								suger.prendasSugeridas.put(12, sugerenciaSup.prendasSugeridas.get(12));
+								suger.prendasSugeridas.put(11, sugerenciaSup.prendasSugeridas.get(11));
+							}	
+							
 							if(sugerenciaSup.getMaxCapaSuperior() == 3) {
 							
 								suger.prendasSugeridas.put(13, sugerenciaSup.prendasSugeridas.get(13));
