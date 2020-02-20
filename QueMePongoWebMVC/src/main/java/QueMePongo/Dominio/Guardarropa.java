@@ -58,40 +58,7 @@ public class Guardarropa  implements Serializable{
 	}
 	
 
-	/*
 	
-	public List<Sugerencia> GenerarSugerencia(int temperaturaMinima, int temperaturaMaxima) throws IOException{
-			
-			return algortimoDeRecomendacion(temperaturaMinima,temperaturaMaxima); 
-	}
-	
-	*/
-	
-	/*
-	public boolean agregarPrenda(Prenda prenda){
-		
-		//Se compara contra usuario comun
-		if(this.administrador.getCodPerfil().getCodigoPerfil() == 2) {
-		
-			if(cantidadDePrendas() <= this.administrador.getPrendasDisponibles()) {
-				
-				prendasDisponibles.add(prenda);
-				this.administrador.disminuirDisponible();
-				return true;
-				
-			}else {
-				
-				return false;
-			}
-			
-		}else {
-			
-			prendasDisponibles.add(prenda);
-			return true;
-		}	
-		
-	}
-	*/
 	
 	public void eliminarPrenda(Prenda prenda){
 	

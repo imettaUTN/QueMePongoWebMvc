@@ -1,5 +1,7 @@
 package QueMePongo.Dominio;
+import java.io.IOException;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -127,6 +129,28 @@ public class Evento  implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
+	public List<Sugerencia> ProcesarEvento() throws IOException, SQLException {
+		try {
+			List<Sugerencia> sugerenciasTotales = new ArrayList<Sugerencia>();
+			for (Guardarropa g : this.getUsuario().getGuardarropas()) {
+				sugerenciasTotales.addAll(g.recomendacion(this.getTemperaturaMinima(), this.getTemperaturaMaxima()));
+			}
+
+			List<Sugerencia> primeros5 = new ArrayList<Sugerencia>();
+			int index = 0;
+			while (index <= 5) {
+				if (sugerenciasTotales.get(index) != null) {
+					primeros5.add(sugerenciasTotales.get(index));
+				}
+				index++;
+			}
+			return primeros5;
+		} catch (Exception e) {
+			throw e;
+
+		}
+	}
 
 	/*
 	public void ProcesarEvento() throws IOException {
@@ -154,6 +178,14 @@ public class Evento  implements Serializable{
 
 	public int getTemperaturaMinima() {
 		return temperaturaMinima;
+	}
+
+	public int getCodEvento() {
+		return codEvento;
+	}
+
+	public void setCodEvento(int codEvento) {
+		this.codEvento = codEvento;
 	}
 
 	public void setTemperaturaMinima(int temperaturaMinima) {

@@ -20,7 +20,7 @@
         <class>QueMePongo.Dominio.Evento</class>
         <class>QueMePongo.Dominio.Sugerencia</class>
         <class>QueMePongo.Dominio.EstadoEvento</class>
-        <class>Desarrollo.ColoresRechazados</class>
+        <class>QueMePongo.Dominio.ColoresRechazados</class>
       
         <properties>
 

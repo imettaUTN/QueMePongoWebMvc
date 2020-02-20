@@ -5,7 +5,6 @@ import java.util.*;
 public class SugerenciaListContainerModel {
 	private List<PrendaModelo> listaPrendas;
 	private int motivoRechazo;
-	private String datosBasicosSugerencia;
 
 	// Son los datos que le paso a la vista para recostruir la sugerencia
 	public String ObtenerClaveDatosBasicosSug() {
@@ -40,11 +39,4 @@ public class SugerenciaListContainerModel {
 		this.motivoRechazo = motivoRechazo;
 	}
 
-	public String getDatosBasicosSugerencia() {
-		return datosBasicosSugerencia;
-	}
-
-	public void setDatosBasicosSugerencia(String datosBasicosSugerencia) {
-		this.datosBasicosSugerencia = datosBasicosSugerencia;
-	}
 }

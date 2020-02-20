@@ -2,7 +2,7 @@ package QueMePongo.Web;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import QueMePongo.Web.Mocks.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -31,14 +31,19 @@ public class SugerenciaController {
 	
 
 	@RequestMapping(value = "/Sugerencias.htm" ,method = RequestMethod.GET)
-	public ModelAndView MostrarSugerencias(@RequestParam("idEv") String idEv, Model model) throws Exception {
+	public ModelAndView MostrarSugerencias(Model model ,HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("sugerencias");
-        int IDEvento = Integer.valueOf(idEv);
 		SugerenciaListContainerModel prendasModelosList = new SugerenciaListContainerModel();
 		int i = 1;
-		//for(Sugerencia sugerencia : Evento.BuscarEvento(IDEvento).getSugerencias() ) {
-		// esto es de test, el que va es el de arriba que recupera de la base de datos.
-		for(Sugerencia sugerencia : getListPrenda().getSugerencias() ) {
+		
+		Evento ev = null ;
+		HttpSession sesion = request.getSession();
+
+		if (sesion.getAttribute("evento") != null) {
+			ev = (Evento) sesion.getAttribute("evento");
+		}
+				
+		for(Sugerencia sugerencia : ev.getSugerencias() ) {
 			prendasModelosList.setListaPrendas(Comman.ConvertPrendaToModel(sugerencia.getListaPrendasSugeridas()));
 			model.addAttribute("Sugerencia" + i, prendasModelosList);
 			modelAndView.addObject("codPrendas"+ i, prendasModelosList.ObtenerClaveDatosBasicosSug() +  ",MCS=" +sugerencia.getMaxCapaSuperior() + ",MCI=" +sugerencia.getMaxCapaInferior());
@@ -153,48 +158,9 @@ public class SugerenciaController {
 		return -1;
 	}
 	private Evento getListPrenda() {
-	     /*Esta lista viene de la DB*/  
-		 Evento evento = new Evento();
-		 List<Prenda> Lprendas = new ArrayList<Prenda>();
-		 Sugerencia sug = new Sugerencia();
-	      Prenda prend = new Prenda();
-          Categoria categoria = new Categoria();
-
-          categoria.setCodCategoria(1);
-          categoria.setDescripcion("Zapatillas");
-          TipoPrenda tp = new TipoPrenda();
-          tp.setDescripcion("lalal");
-          tp.setCategoria(categoria);
-          tp.setCodTipoPrenda(1);
-                   
-          
-          Guardarropa guard = new Guardarropa();
-          guard.setCompartido(false);
-          guard.setDescripcion("guardarropa");
-          guard.setId(0);          
-          prend.setGuardarropa(guard);
-          prend.setColorPrimario("rojo");
-          prend.setTipoPrenda(tp);
-          prend.setColorSecundario("azul");
-          prend.setDescripcion("prenda 1");
-          prend.setDisponibleParaSugerir(true);
-          prend.setNumeroDeCapa(EnumCapa.Primera);
-     	for( int i = 0 ; i <= 4; i++) {
-            prend.setCodPrenda(i);
-			Lprendas.add(prend);			
-		}
-     	sug.setIdSugerencia(1);
-     	sug.setMaxCapaInferior(0);
-     	sug.setMaxCapaSuperior(2);	
-     	sug.setUsuario(new Usuario());
-     	sug.setListaPrendasSugeridas(Lprendas);
-     	evento.AgregarSugerenciaAEvento(sug);
-     	evento.AgregarSugerenciaAEvento(sug);
-     	evento.AgregarSugerenciaAEvento(sug);
-     	evento.AgregarSugerenciaAEvento(sug);
-     	evento.AgregarSugerenciaAEvento(sug);
-
-     	       return evento;
-	    }
+		EventoMock ev = new EventoMock();
+		return ev.getEvento();
+	}
+	
 
 }
