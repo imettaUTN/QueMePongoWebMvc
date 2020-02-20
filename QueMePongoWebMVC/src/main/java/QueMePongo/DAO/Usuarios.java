@@ -5,8 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import Desarrollo.Evento;
-import Desarrollo.Usuario;
 import QueMePongo.Dominio.*;
 public class Usuarios extends Repositorio{
 		
