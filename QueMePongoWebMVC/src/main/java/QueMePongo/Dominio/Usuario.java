@@ -45,7 +45,8 @@ public class Usuario  implements Serializable{
 	
 	private int codigoPerfil;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	//@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "PrfCod", referencedColumnName = "PrfCod")
 	private Perfil codPerfil;
 	

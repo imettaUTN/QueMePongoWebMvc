@@ -42,4 +42,13 @@ public class Usuarios extends Repositorio{
 	
 		return eventos;
 	}
+	
+	public void eliminar(String codUsuario){
+		
+		em.getTransaction().begin();
+		Usuario usr = new Usuario();
+		usr = em.getReference(Usuario.class, codUsuario);
+		em.remove(usr);
+		em.getTransaction().commit();
+	}
 }
