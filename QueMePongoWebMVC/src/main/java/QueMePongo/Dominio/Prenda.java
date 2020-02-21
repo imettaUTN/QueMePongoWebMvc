@@ -1,9 +1,7 @@
 package QueMePongo.Dominio;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import QueMePongo.DAO.JPAUtil;
 import QueMePongo.Dominio.Enumerados.*;
 
@@ -38,8 +36,8 @@ public class Prenda implements Serializable {
 	@JoinColumn(name = "CodTipoPrenda", referencedColumnName = "CodTipoPrenda")
 	private TipoPrenda tipoPrenda;
 	
-	@Column(name = "PrendaDisponible")
-	private boolean disponible = true;
+	@Column(name = "Sugerencia")
+	private int sugerenciaEvento; //Evento
 	
 	@Column(name = "CCNivelAbrigo")
 	private int ccNivelDeAbrigo; //Coeficiente Cambio Nivel de Abrigo
@@ -96,14 +94,6 @@ public class Prenda implements Serializable {
 		return (this.tipoPrenda.getCategoria().getCodCategoria() == 3);
 	}
 
-	public void BoquearPrenda() {
-		this.disponible = false;
-	}
-
-	public void DesbloquearPrenda() {
-		this.disponible = false;
-	}
-	
 	public void visualizar(){
 		
 		System.out.print(" Prenda: " + tipoPrenda.getDescripcion() + " - Color Primario: " + colorPrimario + " - Color Secundario: " + colorSecundario + "\n");
@@ -185,10 +175,6 @@ public class Prenda implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public void setDisponibleParaSugerir(boolean disponibleParaSugerir) {
-		this.disponible = disponibleParaSugerir;
-	}
-
 	public int getCambioNivel() {
 		return ccNivelDeAbrigo;
 	}
@@ -196,5 +182,23 @@ public class Prenda implements Serializable {
 	public void setCambioNivel(int cambioNivel) {
 		ccNivelDeAbrigo = cambioNivel;
 	}
+	
+	public void vincularEvento(Evento evento) {
+		
+		this.sugerenciaEvento = evento.getCodEvento();
+		this.guardar();
+		
+	}
+	
+	public boolean disponible() {
+		
+		if(this.sugerenciaEvento == 0) {
+			return true;
+		}else
+		{
+			return false;
+		}	
+		
+	}	
 
 }

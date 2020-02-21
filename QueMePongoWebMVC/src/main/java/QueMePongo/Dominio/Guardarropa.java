@@ -92,7 +92,7 @@ public class Guardarropa  implements Serializable{
 		
 		List<Object> parteSuperior = this.prendasDisponibles.stream().filter(new Predicate<Prenda>() {
 			public boolean test(Prenda p) {
-				return p.esSuperior() && p.nivelAbrigo() >= nivelDeAbrigo;
+				return p.esSuperior() && p.nivelAbrigo() >= nivelDeAbrigo && p.disponible();
 			}
 		}).collect(Collectors.toList());
 		
@@ -245,7 +245,7 @@ public class Guardarropa  implements Serializable{
 		
 		if(this.prendasDisponibles.size() >0 ) {
 		
-		List<Prenda> parteInferior = this.prendasDisponibles.stream().filter(p->p.esInferior() && p.nivelAbrigo() >= nivelDeAbrigo).collect(Collectors.toList());
+		List<Prenda> parteInferior = this.prendasDisponibles.stream().filter(p->p.esInferior() && p.nivelAbrigo() >= nivelDeAbrigo && p.disponible()).collect(Collectors.toList());
 		
 		List<Prenda> capaDos = parteInferior.stream().filter(p->p.getCapa() == 2).collect(Collectors.toList());
 		List<Prenda> capaUno = parteInferior.stream().filter(p->p.getCapa() == 1).collect(Collectors.toList());
