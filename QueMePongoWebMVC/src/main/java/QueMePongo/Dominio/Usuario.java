@@ -97,6 +97,7 @@ public class Usuario  implements Serializable{
 		
 		guardarropa = this.obtenerGuardarropa(index);
 		
+		//Usuario Básico
 		if(this.codPerfil.getCodigoPerfil() == 2){
 			
 			if(this.prendasDisponibles <= 60) {
@@ -256,12 +257,12 @@ public class Usuario  implements Serializable{
 	
 	public void disminuirDisponible() {
 		
-		this.prendasDisponibles -= 1;
+		this.prendasDisponibles += 1;
 	}
 	
 	public void aumentarDisponible() {
 		
-		this.prendasDisponibles += 1;
+		this.prendasDisponibles -= 1;
 	}
 
 	public List<Guardarropa> getGuardarropas() {
