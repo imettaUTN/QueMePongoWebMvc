@@ -238,4 +238,12 @@ public class Evento  implements Serializable{
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+	
+	public void aceptarSugerencia(Sugerencia sugerencia) {
+		
+		for(Prenda p:sugerencia.getListaPrendasSugeridas()) {
+			
+			p.vincularEvento(this);
+		}
+	}
 }
