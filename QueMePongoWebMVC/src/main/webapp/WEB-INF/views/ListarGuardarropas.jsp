@@ -27,29 +27,36 @@ input {
 }
 </style>
 <body>
-	<h4 class="text-center text-uppercase">Alta evento</h4>
-	<br>
-	<form:form method="post" value="/CargarEvento" commandName="evento">
-		<table>
-			<tbody>
-				<tr>
-					<td class="text-center text-uppercase">descripcion:</td>
-					<td><input type="text" name="descripcion" class="form-control"></td>
-					<td><form:errors path="descripcion" cssClass="campoConError" /></td>
-				</tr>
-				<tr>
-					<td class="text-center text-uppercase">Fecha evento:</td>
-					<td><input type="text" name="fecha" class="form-control"></td>
-					<td><form:errors path="fecha" cssClass="campoConError" /></td>
-				</tr>
-				<tr>
-					<td colspan="3"><input type="submit" value="Execute" /></td>
-				</tr>
-			</tbody>
-		</table>
+	<h3 class="text-left text-uppercase">
+		<ins>lista guardarropa:</ins>
+	</h3>
+	<br />
+	<table>
+		<tbody>
+			<tr>
+				<td class="text-center text-uppercase">descripcion:</td>
 
-	</form:form>
-	<div>
+			</tr>
+
+			<c:forEach items="${Lguarda.listaGuardarropa}" var="eventModel">
+
+				<tr>
+					<td><input type="text" name="descripcion"
+						value="${eventModel.descripcion}" class="form-control text-left"></td>
+				</tr>
+				<tr>
+					<td><b><a class="text-muted"
+							href="/QueMePongoWebMVC/ModificarGuardarropa.htm?codGuard=${eventModel.codigoGuardarropa}">Modificar</a></b>
+					</td>
+					<td><b><a class="text-muted"
+							href="/QueMePongoWebMVC/codGuard.htm?codGuard=${eventModel.codigoGuardarropa}">Eliminar</a></b>
+					</td>
+				</tr>
+
+			</c:forEach>
+		</tbody>
+	</table>
+<div>
 				<b><a class="text-muted" href="/QueMePongoWebMVC/menu.htm">Back</a></b>
 	</div>
 </body>

@@ -42,7 +42,7 @@ public class LoginController {
 			return "login.htm";
 		}
 
-		//this.setErrorEnCredenciales(login.ValidarLogin());
+		this.setErrorEnCredenciales(login.ValidarLogin());
 		this.setErrorEnCredenciales(false);
 		if (this.isErorEnCredenciales()) {
 			
@@ -50,10 +50,7 @@ public class LoginController {
 		}
 		logger.info("Guardando login en sesion");
 		HttpSession sesion = request.getSession();
-		UsuarioMock mock = new UsuarioMock();
-        Usuario user =  new Usuario();
-		 user = mock.GetAdmUsuario();
-		//user = user.recuperar(login.getEmail());
+        Usuario user =  Usuario.recuperar(login.getEmail());
 		
 		sesion.setAttribute("Usuario", user);
 

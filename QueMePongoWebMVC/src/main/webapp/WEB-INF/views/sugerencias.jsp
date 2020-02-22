@@ -31,12 +31,10 @@
 		<div class="card-deck mb-3    text-center">
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h3 class="card-title pricing-card-title">
-						Sugerencia <small class="text-muted">1</small>
-					</h3>
+					<h3 class="card-title pricing-card-title">Sugerencia</h3>
 				</div>
 				<div class="card-body">
-				<h6>Guardarropas: "pp"</h6>
+					<h6>Guardarropas: ${desGuardarropa1}</h6>
 					<c:forEach items="${Sugerencia1.listaPrendas}" var="user"
 						varStatus="tagStatus">
 						<ul class="list-unstyled mt-3 mb-4">
@@ -57,12 +55,10 @@
 			</div>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h3 class="card-title pricing-card-title">
-						Sugerencia <small class="text-muted">2</small>
-					</h3>
-					<h4>Guardarropa "ppepe"</h4>
+					<h3 class="card-title pricing-card-title">Sugerencia</h3>
 				</div>
 				<div class="card-body">
+					<h6>Guardarropas: ${desGuardarropa2}</h6>
 					<c:forEach items="${Sugerencia2.listaPrendas}" var="user"
 						varStatus="tagStatus">
 						<ul class="list-unstyled mt-3 mb-4">
@@ -83,13 +79,10 @@
 			</div>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h3 class="card-title pricing-card-title">
-						Sugerencia <small class="text-muted">3</small>
-					</h3>
-					<h4>Guardarropa "ppepe"</h4>
-
+					<h3 class="card-title pricing-card-title">Sugerencia</h3>
 				</div>
 				<div class="card-body">
+					<h6>Guardarropas: ${desGuardarropa3}</h6>
 					<c:forEach items="${Sugerencia3.listaPrendas}" var="user"
 						varStatus="tagStatus">
 						<ul class="list-unstyled mt-3 mb-4">
@@ -110,15 +103,13 @@
 			</div>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h3 class="card-title pricing-card-title">
-						Sugerencia <small class="text-muted">4</small>
-					</h3>
-					<h4>Guardarropa "ppepe"</h4>
-
+					<h3 class="card-title pricing-card-title">Sugerencia</h3>
 				</div>
 				<div class="card-body">
+					<h6>Guardarropas: ${desGuardarropa4}</h6>
 					<c:forEach items="${Sugerencia4.listaPrendas}" var="user"
 						varStatus="tagStatus">
+
 						<ul class="list-unstyled mt-3 mb-4">
 
 							<li>${user.descripcion}</li>
@@ -137,13 +128,10 @@
 			</div>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h3 class="card-title pricing-card-title">
-						Sugerencia <small class="text-muted">5</small>
-					</h3>
-					<h4>Guardarropa "ppepe"</h4>
-
+					<h3 class="card-title pricing-card-title">Sugerencia</h3>
 				</div>
 				<div class="card-body">
+					<h6>Guardarropas: ${desGuardarropa5}</h6>
 					<c:forEach items="${Sugerencia5.listaPrendas}" var="user"
 						varStatus="tagStatus">
 						<ul class="list-unstyled mt-3 mb-4">
@@ -163,6 +151,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div>
+				<b><a class="text-muted" href="/QueMePongoWebMVC/menu.htm">Back</a></b>
 	</div>
 </body>
 </html>

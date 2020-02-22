@@ -27,21 +27,25 @@ input {
 }
 </style>
 <body>
-	<h4 class="text-center text-uppercase">Alta evento</h4>
+	<h1>
+		<fmt:message key="heading" />
+	</h1>
+	<p>
+		<fmt:message key="greeting" />
+	</p>
 	<br>
-	<form:form method="post" value="/CargarEvento" commandName="evento">
+	<form:form method="post" commandName="guard">
 		<table>
 			<tbody>
 				<tr>
-					<td class="text-center text-uppercase">descripcion:</td>
+					<td>Guardarropa:</td>
 					<td><input type="text" name="descripcion" class="form-control"></td>
 					<td><form:errors path="descripcion" cssClass="campoConError" /></td>
 				</tr>
 				<tr>
-					<td class="text-center text-uppercase">Fecha evento:</td>
-					<td><input type="text" name="fecha" class="form-control"></td>
-					<td><form:errors path="fecha" cssClass="campoConError" /></td>
-				</tr>
+					<td>¿Compartido?</td>
+					<td><form:errors path="compartido" cssClass="campoConError"
+							readonly /></td>
 				<tr>
 					<td colspan="3"><input type="submit" value="Execute" /></td>
 				</tr>
@@ -49,8 +53,29 @@ input {
 		</table>
 
 	</form:form>
-	<div>
-				<b><a class="text-muted" href="/QueMePongoWebMVC/menu.htm">Back</a></b>
-	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td class="text-center text-uppercase">descripcion:</td>
+				<td class="text-center text-uppercase">Categoria:</td>
+				<td class="text-center text-uppercase">Guardarropa:</td>
+			</tr>
+
+			<c:forEach items="${guard.prendasDisponibles}" var="ll">
+
+				<tr>
+					<td><input type="text" name="descripcion"
+						value="${ll.descripcion}" class="form-control text-left" readonly></td>
+					<td><input type="text" name="fecha"
+						value="${ll.descripcionCat}"
+						class="form-control text-left" readonly></td>
+					<td><input type="text" name="estado"
+						value="${ll.descripcionGuardarropa}"
+						class="form-control text-left" readonly></td>
+				</tr>
+
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>

@@ -75,5 +75,8 @@ input {
 		</table>
 
 	</form:form>
+	<div>
+				<b><a class="text-muted" href="/QueMePongoWebMVC/menu.htm">Back</a></b>
+	</div>
 </body>
 </html>

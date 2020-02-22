@@ -67,6 +67,7 @@ public class Comman {
 		
 		for( Prenda prenda : prendas) {
 			PrendaModelo Mprenda = new PrendaModelo(prenda.getDescripcion(), prenda.getColorPrimario(), prenda.getColorSecundario(), prenda.getCategoria().getDescripcion(), prenda.getCodPrenda(), prenda.getGuardarropa().getId());
+			Mprenda.setDescripcionGuardarropa(prenda.getGuardarropa().getDescripcion());
 			Lprenda.add(Mprenda);
 		}
 		return Lprenda;

@@ -496,7 +496,8 @@ public class Guardarropa  implements Serializable{
 			*/
 			return sugerenciasColoresExcluidos; //Sale por menos de 5 sugerencias
 		}
-		
+	
+	
 	/*
 	
 	public List<Sugerencia> algortimoDeRecomendacion(int temperaturaMaxima, int temperaturaMinima) throws IOException{

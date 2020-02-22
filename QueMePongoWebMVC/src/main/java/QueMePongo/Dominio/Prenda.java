@@ -53,6 +53,11 @@ public class Prenda implements Serializable {
 			JPAUtil trn = new JPAUtil();
 			trn.transaccion().prenda().persistir(this);
 	}
+	public static void eliminar(int idPrenda){
+		
+		JPAUtil trn = new JPAUtil();
+		trn.transaccion().prenda().eliminar(idPrenda);;
+}
 
 	public static Prenda buscarPorCodigo(int codigoPrenda) {
 		JPAUtil trn = new JPAUtil();

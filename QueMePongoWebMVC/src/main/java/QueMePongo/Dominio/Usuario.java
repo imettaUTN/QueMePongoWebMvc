@@ -73,7 +73,7 @@ public class Usuario  implements Serializable{
 		trn.transaccion().usuario().persistir(this);
 	}
 	
-	public Usuario recuperar(String id){
+	public static Usuario recuperar(String id){
 		
 		JPAUtil trn = new JPAUtil();
 		return trn.transaccion().usuario().buscarPorId(id);
@@ -278,6 +278,13 @@ public class Usuario  implements Serializable{
 		return this.getGuardarropas().get(index);
 	}
 	
+	public List<Prenda> ListarPrendasTotales(){
+		List<Prenda> lista = new ArrayList<Prenda>();
+		for( Guardarropa g: this.getGuardarropas()) {
+			lista.addAll(g.getPrendasDisponibles());
+		}
+		return lista;
+	}
 	public boolean validaLogin() throws SQLException{
 		
 		boolean valida = true;

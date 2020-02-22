@@ -34,14 +34,15 @@ input {
 		<fmt:message key="greeting" />
 	</p>
 	<br>
-	<form:form method="post" commandName="guardarropa">
+	<form:form method="post" commandName="guard">
 		<table>
 			<tbody>
 				<tr>
 					<td>Guardarropa:</td>
 					<td><input type="text" name="descripcion" class="form-control"></td>
 					<td><form:errors path="descripcion" cssClass="campoConError" /></td>
-				</tr>				
+				</tr>	
+				<c:if test="${codPerfil == 3}"> 			
 				<tr>
 					<td>¿Compartido?</td>
 					<td><select name="compartido">
@@ -49,6 +50,7 @@ input {
 							<option value="false">No</option>
 					</select></td>
 				</tr>
+				</c:if>
 				<tr>
 					<td colspan="3"><input type="submit" value="Execute" /></td>
 				</tr>
@@ -56,5 +58,8 @@ input {
 		</table>
 
 	</form:form>
+	<div>
+				<b><a class="text-muted" href="/QueMePongoWebMVC/menu.htm">Back</a></b>
+	</div>
 </body>
 </html>

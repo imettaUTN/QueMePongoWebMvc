@@ -31,10 +31,11 @@ public class SugerenciaController {
 		if (sesion.getAttribute("evento") != null) {
 			ev = (Evento) sesion.getAttribute("evento");
 		}
-				
+		
 		for(Sugerencia sugerencia : ev.getSugerencias() ) {
 			prendasModelosList.setListaPrendas(Comman.ConvertPrendaToModelList(sugerencia.getListaPrendasSugeridas()));
 			model.addAttribute("Sugerencia" + i, prendasModelosList);
+			model.addAttribute("desGuardarropa" +i, sugerencia.obtenerGuadarropa().getDescripcion());
 			modelAndView.addObject("codPrendas"+ i, prendasModelosList.ObtenerClaveDatosBasicosSug() +  ",MCS=" +sugerencia.getMaxCapaSuperior() + ",MCI=" +sugerencia.getMaxCapaInferior());
 			i++;
 		}	

@@ -65,7 +65,7 @@ public class EventoController {
 		evento.setUsuario(user);
 		evento.guardar();
 
-		return "menu";
+		return "redirect:/menu.htm";
 	}
 
 	@RequestMapping(value = "/ListarEvento.htm", method = RequestMethod.GET)

@@ -8,9 +8,11 @@ public class PrendaModelo {
 	private int codPrenda;
     private int codigoGuardarropa;  
 	private String codigosPrendasSug;
+	private String descripcionGuardarropa;
 	private int tipoPrenda ;
     private String descripcionCat;
-	
+	private int coeficienteCambio;
+    
 	public PrendaModelo(String desc, String cp, String cs, String cat, int codPrenda, int codGuardarropa) {
 		this.setColorPrimario(cp);
 		this.setColorSecundario(cs);
@@ -88,6 +90,26 @@ public class PrendaModelo {
 
 	public void setCatPrenda(int catPrenda) {
 		this.catPrenda = catPrenda;
+	}
+
+
+	public int getCoeficienteCambio() {
+		return coeficienteCambio;
+	}
+
+
+	public void setCoeficienteCambio(int coeficienteCambio) {
+		this.coeficienteCambio = coeficienteCambio;
+	}
+
+
+	public String getDescripcionGuardarropa() {
+		return descripcionGuardarropa;
+	}
+
+
+	public void setDescripcionGuardarropa(String descripcionGuardarropa) {
+		this.descripcionGuardarropa = descripcionGuardarropa;
 	}
 	
 }
