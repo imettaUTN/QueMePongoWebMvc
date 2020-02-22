@@ -40,7 +40,6 @@ List<Evento> eventos = new ArrayList<Evento>();
          prend.setTipoPrenda(tp);
          prend.setColorSecundario("azul");
          prend.setDescripcion("prenda 1");
-         prend.setDisponibleParaSugerir(true);
          prend.setNumeroDeCapa(EnumCapa.Primera);
     	for( int i = 0 ; i <= 4; i++) {
            prend.setCodPrenda(i);

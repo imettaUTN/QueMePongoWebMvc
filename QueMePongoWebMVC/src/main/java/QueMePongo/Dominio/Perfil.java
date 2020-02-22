@@ -13,7 +13,7 @@ public class Perfil  implements Serializable{
 	/**
 	 * 
 	 */
-	Perfil(){}
+	public Perfil(){}
 	public Perfil(String desc, int codPerf){
 		this.setCodigoPerfil(codPerf);
 		this.setDescripcion(desc);
