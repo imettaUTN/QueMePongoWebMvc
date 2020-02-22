@@ -183,9 +183,9 @@ public class Prenda implements Serializable {
 		ccNivelDeAbrigo = cambioNivel;
 	}
 	
-	public void vincularEvento(Evento evento) {
+	public void vincularEvento(int evento) {
 		
-		this.sugerenciaEvento = evento.getCodEvento();
+		this.sugerenciaEvento = evento;
 		this.guardar();
 		
 	}

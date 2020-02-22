@@ -239,6 +239,7 @@ public class Evento  implements Serializable{
 		this.fecha = fecha;
 	}
 	
+	/*
 	public void aceptarSugerencia(Sugerencia sugerencia) {
 		
 		for(Prenda p:sugerencia.getListaPrendasSugeridas()) {
@@ -246,4 +247,5 @@ public class Evento  implements Serializable{
 			p.vincularEvento(this);
 		}
 	}
+	*/
 }

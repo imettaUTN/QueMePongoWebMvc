@@ -60,8 +60,12 @@ public class Sugerencia  implements Serializable{
 		IdSugerencia = idSugerencia;
 	}
 
-	public void AceptarSugerencia() {
-		// TODO: Asignar sugerencia a Evento en formato XML.
+	public void AceptarSugerencia(int codEvento) {
+
+		for(Prenda p:this.getListaPrendasSugeridas()) {
+			
+			p.vincularEvento(codEvento);
+		}
 	}
 	public void RechazarSugerencia() {
 		
