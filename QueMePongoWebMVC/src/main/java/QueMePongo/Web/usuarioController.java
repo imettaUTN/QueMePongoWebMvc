@@ -1,5 +1,4 @@
 package QueMePongo.Web;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import QueMePongo.Dominio.Perfil;
+import QueMePongo.DAO.*;
 import QueMePongo.Dominio.Usuario;
 import QueMePongo.Validaciones.ValidadorUsuario;
 @Controller
@@ -31,21 +31,27 @@ public class usuarioController {
  @RequestMapping(method = RequestMethod.POST)
  public String RegistrarUsuario(@Valid Usuario user, BindingResult result,HttpServletRequest request) throws Exception
  {
+	 JPAUtil conexion = new JPAUtil();
+	 
      if (result.hasErrors()) {
          return "usuario";
      }
      Perfil perfil = null;
+     
+     perfil = conexion.transaccion().perfil().buscarPorId(user.getCodigoPerfil());
+     
+     /*
      switch(user.getCodigoPerfil()) {
      case 1:  perfil = new Perfil("ADMINISTRADOR",1); break;
      case 2:  perfil = new Perfil("PUBLICO",2); break;
      case 3:  perfil = new Perfil("PRIVADO",3); break;
-
-     }
+	 }
+     */
     
     user.setCodPerfil(perfil);
 	HttpSession sesion = request.getSession();
 	sesion.setAttribute("Usuario", user);
-  //  user.guardar();
+	user.guardar();
        
      return "redirect:/menu.htm";
  }
