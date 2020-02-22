@@ -179,8 +179,12 @@ public class Prenda implements Serializable {
 		return ccNivelDeAbrigo;
 	}
 
-	public void setCambioNivel(int cambioNivel) {
-		ccNivelDeAbrigo = cambioNivel;
+	public void aumentarNivelAbrigo(int i) {
+		ccNivelDeAbrigo += i;
+	}
+	
+	public void disminuirNivelAbrigo(int i) {
+		ccNivelDeAbrigo -= i;
 	}
 	
 	public void vincularEvento(int evento) {

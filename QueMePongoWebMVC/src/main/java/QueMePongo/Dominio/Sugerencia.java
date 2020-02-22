@@ -33,6 +33,8 @@ public class Sugerencia  implements Serializable{
 	
 	@Transient
 	HashMap<Integer, Prenda> prendasSugeridas = new HashMap<Integer, Prenda>();
+	
+	@Transient
 	private List<Prenda> listaPrendasSugeridas ;
 	
 	@Transient
@@ -67,10 +69,9 @@ public class Sugerencia  implements Serializable{
 			p.vincularEvento(codEvento);
 		}
 	}
-	public void RechazarSugerencia(int codigoRechazo) {
+	public void rechazarSugerencia(int codigoRechazo) {
 		
 		JPAUtil jpa = new JPAUtil();
-		
 		
 		switch(codigoRechazo) {
 		
@@ -90,6 +91,52 @@ public class Sugerencia  implements Serializable{
 			
 			case 3:
 				
+				//Caluroso Torso
+				this.prendaCapaSuperiorMax().aumentarNivelAbrigo(1);
+				this.prendaCapaSuperiorMax().guardar();
+				
+			case 4:
+				
+				//Muy Caluroso Torso
+				this.prendaCapaSuperiorMax().aumentarNivelAbrigo(2);
+				this.prendaCapaSuperiorMax().guardar();
+				
+			case 5:	
+				
+				//Friolento Torso
+				this.prendaCapaSuperiorMax().disminuirNivelAbrigo(1);
+				this.prendaCapaSuperiorMax().guardar();
+				
+			case 6:	
+	
+				//Muy Friolento Torso
+				this.prendaCapaSuperiorMax().disminuirNivelAbrigo(2);
+				this.prendaCapaSuperiorMax().guardar();	
+				
+			case 7:
+				
+				//Caluroso Inferior
+				this.prendaCapaSuperiorMin().aumentarNivelAbrigo(1);
+				this.prendaCapaSuperiorMin().guardar();
+				
+			case 8:
+				
+				//Muy Caluroso Inferior
+				this.prendaCapaSuperiorMin().aumentarNivelAbrigo(2);
+				this.prendaCapaSuperiorMin().guardar();
+				
+			case 9:	
+				
+				//Friolento Inferior
+				this.prendaCapaSuperiorMin().disminuirNivelAbrigo(1);
+				this.prendaCapaSuperiorMin().guardar();
+				
+			case 10:	
+	
+				//Muy Friolento Inferior
+				this.prendaCapaSuperiorMin().disminuirNivelAbrigo(2);
+				this.prendaCapaSuperiorMin().guardar();		
+
 			}
 		}
 		
@@ -174,6 +221,18 @@ public class Sugerencia  implements Serializable{
 		}
 		
 		return g;
+	}
+	
+	public Prenda prendaCapaSuperiorMax() {
+		
+		int cod = 10 + this.maxCapaSuperior;
+		return this.prendasSugeridas.get(cod);
+	}
+	
+	public Prenda prendaCapaSuperiorMin() {
+		
+		int cod = 10 + this.maxCapaInferior;
+		return this.prendasSugeridas.get(cod);
 	}
 	
 }
