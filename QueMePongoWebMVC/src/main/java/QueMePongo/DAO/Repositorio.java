@@ -13,6 +13,7 @@ public class Repositorio {
 	private GuardarropasPersistencia guardarropa;
 	private EstadosEventos estados;
 	private Eventos eventos;
+	private TipoEventos tipoEventos;
 	protected EntityManager em;
 	
 	public Repositorio(EntityManager em){
@@ -26,6 +27,15 @@ public class Repositorio {
 		}
 		
 		return tipoPrendas;
+	}
+	
+	public TipoEventos tipoEventos(){
+		
+		if(tipoEventos == null) {
+			tipoEventos = new TipoEventos(em);
+		}
+		
+		return tipoEventos;
 	}
 	
 	public Categorias categorias(){
