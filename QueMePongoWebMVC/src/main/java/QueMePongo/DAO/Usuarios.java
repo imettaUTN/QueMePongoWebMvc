@@ -51,4 +51,14 @@ public class Usuarios extends Repositorio{
 		em.remove(usr);
 		em.getTransaction().commit();
 	}
+	
+	public Usuario busquedaPorMail(String mail){
+		
+		Usuario usr = new Usuario();
+		Query query = em.createQuery("SELECT U FROM Usuario U WHERE U.mail = :mail");
+		query.setParameter("mail", mail);
+		usr = (Usuario) query.getSingleResult();
+	
+		return usr;
+	}
 }
