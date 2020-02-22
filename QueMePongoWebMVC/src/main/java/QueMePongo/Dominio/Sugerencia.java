@@ -138,4 +138,18 @@ public class Sugerencia  implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
+	public Guardarropa obtenerGuadarropa() {
+		
+		Guardarropa g = new Guardarropa();
+		
+		for(Prenda p:listaPrendasSugeridas) {
+			
+			g = p.getGuardarropa();
+			break;
+		}
+		
+		return g;
+	}
+	
 }
