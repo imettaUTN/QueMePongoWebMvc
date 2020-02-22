@@ -69,11 +69,11 @@ public class Sugerencia  implements Serializable{
 			p.vincularEvento(codEvento);
 		}
 	}
-	public void rechazarSugerencia(int codigoRechazo) {
+	public void rechazarSugerencia() {
 		
 		JPAUtil jpa = new JPAUtil();
 		
-		switch(codigoRechazo) {
+		switch(this.motivoDeRechazo) {
 		
 			case 1:
 				
