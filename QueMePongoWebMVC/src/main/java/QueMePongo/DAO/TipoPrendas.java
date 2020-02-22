@@ -19,4 +19,13 @@ public class TipoPrendas extends Repositorio{
 		em.merge(tipoPrenda);
 		em.getTransaction().commit();
 	}
+	
+	public void eliminar(int tipoPrenda){
+		
+		em.getTransaction().begin();
+		TipoPrenda p = new TipoPrenda();
+		p = em.getReference(TipoPrenda.class, p);
+		em.remove(p);
+		em.getTransaction().commit();
+	}
 }

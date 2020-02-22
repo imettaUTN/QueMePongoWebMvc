@@ -120,7 +120,6 @@ public class Evento  implements Serializable{
 		this.fechaEvento = fechaEvento;
 	}
 
-	
 	public void setEstado(EstadoEvento estado) {
 		this.estado = estado;
 	}

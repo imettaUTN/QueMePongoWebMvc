@@ -31,4 +31,13 @@ public class Eventos extends Repositorio{
 	
 		return prendas;
 	}
+	
+	public void eliminar(int codEvento){
+		
+		em.getTransaction().begin();
+		Evento evt = new Evento();
+		evt = em.getReference(Evento.class, codEvento);
+		em.remove(evt);
+		em.getTransaction().commit();
+	}
 }

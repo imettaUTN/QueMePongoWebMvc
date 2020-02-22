@@ -27,4 +27,13 @@ public class Prendas extends Repositorio{
 		prendas = query.getResultList();
 		return prendas;
 	}
+	
+	public void eliminar(int prenda){
+		
+		em.getTransaction().begin();
+		Prenda p = new Prenda();
+		p = em.getReference(Prenda.class, p);
+		em.remove(p);
+		em.getTransaction().commit();
+	}
 }

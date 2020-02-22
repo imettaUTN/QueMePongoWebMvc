@@ -16,4 +16,13 @@ public class GuardarropasPersistencia extends Repositorio{
 		em.merge(guardarropa);
 		em.getTransaction().commit();
 	}
+	
+	public void eliminar(int cod){
+		
+		em.getTransaction().begin();
+		Guardarropa g = new Guardarropa();
+		g = em.getReference(Guardarropa.class, cod);
+		em.remove(g);
+		em.getTransaction().commit();
+	}
 }
