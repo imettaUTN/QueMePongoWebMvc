@@ -22,7 +22,7 @@ public class ColoresRechazados {
 	@Column(name = "P2CodColor2")
 	private String p2Color2;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
 	private Usuario usuario;
 
@@ -79,10 +79,4 @@ public class ColoresRechazados {
 		
 	}
 
-	@Override
-	public String toString() {
-		return "ColoresRechazados [id=" + id + ", p1Color1=" + p1Color1 + ", p1Color2=" + p1Color2 + ", p2Color1="
-				+ p2Color1 + ", p2Color2=" + p2Color2 + ", usuario=" + usuario + "]";
-	}
-	
 }

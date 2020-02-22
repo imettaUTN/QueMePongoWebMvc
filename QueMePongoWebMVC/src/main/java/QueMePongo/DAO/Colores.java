@@ -7,11 +7,11 @@ public class Colores extends Repositorio{
 		super(em);
 	}
 
-	public Colores buscarPorId(String i) {
-		return em.find(Colores.class, i);
+	public ColoresRechazados buscarPorId(String i) {
+		return em.find(ColoresRechazados.class, i);
 	}
 	
-	public void persistir(Colores colores){
+	public void persistir(ColoresRechazados colores){
 		em.getTransaction().begin();
 		em.merge(colores);
 		em.getTransaction().commit();

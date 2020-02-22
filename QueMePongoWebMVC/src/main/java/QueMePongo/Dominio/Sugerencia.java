@@ -67,13 +67,33 @@ public class Sugerencia  implements Serializable{
 			p.vincularEvento(codEvento);
 		}
 	}
-	public void RechazarSugerencia() {
+	public void RechazarSugerencia(int codigoRechazo) {
 		
 		JPAUtil jpa = new JPAUtil();
-		this.cargarExclusiones();
-		jpa.transaccion().sugerenciaRechaza().persistir(this);
-		System.out.println("Fin RechazarSugerencia");
-	}
+		
+		
+		switch(codigoRechazo) {
+		
+			case 1:
+				
+				//Rechaza por combinacion de colores
+				ColoresRechazados colores = new ColoresRechazados();
+				colores.rechazarPorColores(this);
+				jpa.transaccion().color().persistir(colores);
+		
+			case 2:
+				
+				//Rechaza por combinacion de prendas
+				this.cargarExclusiones();
+				jpa.transaccion().sugerenciaRechaza().persistir(this);
+								
+			
+			case 3:
+				
+			}
+		}
+		
+		
 	
 	public int getMaxCapaSuperior(){
 		
