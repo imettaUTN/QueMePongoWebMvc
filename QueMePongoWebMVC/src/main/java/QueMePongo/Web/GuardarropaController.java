@@ -78,14 +78,15 @@ user.agregarGuardarropa(guard);
 	     }*/
 	   HttpSession sesion = request.getSession();
 	   Usuario user = (Usuario) sesion.getAttribute("Usuario");
-user.agregarGuardarropa(guard);
+	   user.agregarGuardarropa(guard);
 	   user.guardar(); 
 	   return "redirect:/menu.htm";
 	 }
+
 	 
 	 @RequestMapping(value="AltaGuardarropa" ,method = RequestMethod.GET)
 	 protected ModelAndView GetModelToView(HttpServletRequest request) throws ServletException {
-	  ModelAndView modelAndView = new ModelAndView("AltaGuardarropa.jsp.jsp");
+	  ModelAndView modelAndView = new ModelAndView("AltaGuardarropa");
 
 	 	Guardarropa guarda = new Guardarropa();
 
