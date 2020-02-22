@@ -48,11 +48,11 @@ public class Evento  implements Serializable{
 	@Column(name = "TempMaxEvt")
 	private int temperaturaMaxima;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "EstadoEvt", referencedColumnName = "CodEstadoEvt")
 	private EstadoEvento estado;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "UsrCod", referencedColumnName = "UsrCod")
 	private Usuario usuario;
 	

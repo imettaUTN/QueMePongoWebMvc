@@ -28,11 +28,11 @@ public class Prenda implements Serializable {
 	@Column(name = "ColorSecundario")
 	private String colorSecundario;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "CodGuardarropa", referencedColumnName = "CodGuardarropa")
 	private Guardarropa guardarropa;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "CodTipoPrenda", referencedColumnName = "CodTipoPrenda")
 	private TipoPrenda tipoPrenda;
 	
