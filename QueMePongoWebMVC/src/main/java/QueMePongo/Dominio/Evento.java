@@ -44,6 +44,7 @@ public class Evento  implements Serializable{
 	@Column(name = "FechaEvento")
 	private LocalDateTime fechaEvento; //Para cuando es el evento.
 	
+	@Transient
 	private String fecha;
 	
 	@Column(name = "TempMinEvt")

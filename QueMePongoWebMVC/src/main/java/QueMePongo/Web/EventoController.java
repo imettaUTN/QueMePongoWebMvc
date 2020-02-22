@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import QueMePongo.Dominio.EstadoEvento;
 import QueMePongo.Dominio.Evento;
+import QueMePongo.DAO.*;
 import QueMePongo.Dominio.Usuario;
 import QueMePongo.Servicio.CommandObtenerClima;
 import QueMePongo.Validaciones.ValidadorEvento;
@@ -54,7 +55,11 @@ public class EventoController {
 	public String CargarEvento( Evento evento, BindingResult result, HttpServletRequest request)
 			throws Exception {
 		
-		evento.setEstado(new EstadoEvento(1, "nuevo"));
+		JPAUtil conexion = new JPAUtil();
+		EstadoEvento estado = new EstadoEvento();
+		estado = conexion.transaccion().estados().buscarPorId(1);
+		
+		evento.setEstado(estado);
 		HttpSession sesion = request.getSession();
 		int anio, mes, dia;
 		dia = Integer.valueOf(evento.getFecha().split("/")[0]);
