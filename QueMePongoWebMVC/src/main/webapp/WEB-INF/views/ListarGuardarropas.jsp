@@ -46,10 +46,10 @@ input {
 				</tr>
 				<tr>
 					<td><b><a class="text-muted"
-							href="/QueMePongoWebMVC/ModificarGuardarropa.htm?codGuard=${eventModel.codigoGuardarropa}">Modificar</a></b>
+							href="/QueMePongoWebMVC/ModificarGuardarropa.htm?codGuard=${eventModel.id}">Modificar</a></b>    
 					</td>
 					<td><b><a class="text-muted"
-							href="/QueMePongoWebMVC/codGuard.htm?codGuard=${eventModel.codigoGuardarropa}">Eliminar</a></b>
+							href="/QueMePongoWebMVC/codGuard.htm?codGuard=${eventModel.id}">Eliminar</a></b>
 					</td>
 				</tr>
 
