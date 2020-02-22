@@ -29,10 +29,9 @@
 }
   </style>
   <body>
-    <h1><fmt:message key="heading"/></h1>
-    <p><fmt:message key="greeting"/> </p>
-     <p><fmt:message key="login"/> </p>    
-    <br>    
+    <h1><fmt:message key="greeting"/></h1>    
+    <br>
+     <p><fmt:message key="login"/> </p>            
    	<c:url value="/Login/Logiar" var="destino"/>			
     <form:form method="post"  commandName="Login">
 	  <table>

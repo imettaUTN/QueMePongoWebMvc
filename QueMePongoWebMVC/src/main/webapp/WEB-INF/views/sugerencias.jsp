@@ -36,6 +36,7 @@
 					</h3>
 				</div>
 				<div class="card-body">
+				<h6>Guardarropas: "pp"</h6>
 					<c:forEach items="${Sugerencia1.listaPrendas}" var="user"
 						varStatus="tagStatus">
 						<ul class="list-unstyled mt-3 mb-4">
@@ -47,8 +48,10 @@
 						</ul>
 					</c:forEach>
 					<div>
-					<b><a class="text-muted" href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas1}">Aceptar</a></b>
-						<b><a class="text-muted" href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas1}">Rechazar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas1}">Aceptar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas1}">Rechazar</a></b>
 					</div>
 				</div>
 			</div>
@@ -57,6 +60,7 @@
 					<h3 class="card-title pricing-card-title">
 						Sugerencia <small class="text-muted">2</small>
 					</h3>
+					<h4>Guardarropa "ppepe"</h4>
 				</div>
 				<div class="card-body">
 					<c:forEach items="${Sugerencia2.listaPrendas}" var="user"
@@ -70,8 +74,10 @@
 						</ul>
 					</c:forEach>
 					<div>
-					<b><a class="text-muted" href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas2}">Aceptar</a></b>
-						<b><a class="text-muted" href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas2}">Rechazar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas2}">Aceptar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas2}">Rechazar</a></b>
 					</div>
 				</div>
 			</div>
@@ -80,6 +86,8 @@
 					<h3 class="card-title pricing-card-title">
 						Sugerencia <small class="text-muted">3</small>
 					</h3>
+					<h4>Guardarropa "ppepe"</h4>
+
 				</div>
 				<div class="card-body">
 					<c:forEach items="${Sugerencia3.listaPrendas}" var="user"
@@ -93,8 +101,10 @@
 						</ul>
 					</c:forEach>
 					<div>
-						<b><a class="text-muted" href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas3}">Aceptar</a></b>
-						<b><a class="text-muted" href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas3}">Rechazar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas3}">Aceptar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas3}">Rechazar</a></b>
 					</div>
 				</div>
 			</div>
@@ -103,6 +113,8 @@
 					<h3 class="card-title pricing-card-title">
 						Sugerencia <small class="text-muted">4</small>
 					</h3>
+					<h4>Guardarropa "ppepe"</h4>
+
 				</div>
 				<div class="card-body">
 					<c:forEach items="${Sugerencia4.listaPrendas}" var="user"
@@ -116,8 +128,10 @@
 						</ul>
 					</c:forEach>
 					<div>
-					<b><a class="text-muted" href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas4}">Aceptar</a></b>
-						<b><a class="text-muted" href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas4}">Rechazar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas4}">Aceptar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas4}">Rechazar</a></b>
 					</div>
 				</div>
 			</div>
@@ -126,6 +140,8 @@
 					<h3 class="card-title pricing-card-title">
 						Sugerencia <small class="text-muted">5</small>
 					</h3>
+					<h4>Guardarropa "ppepe"</h4>
+
 				</div>
 				<div class="card-body">
 					<c:forEach items="${Sugerencia5.listaPrendas}" var="user"
@@ -139,8 +155,10 @@
 						</ul>
 					</c:forEach>
 					<div>
-					<b><a class="text-muted" href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas5}">Aceptar</a></b>
-						<b><a class="text-muted" href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas5}">Rechazar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/AceptarSugerencia.htm?codPrendas=${codPrendas5}">Aceptar</a></b>
+						<b><a class="text-muted"
+							href="/QueMePongoWebMVC/RechazarSugerencia.htm?codPrendas=${codPrendas5}">Rechazar</a></b>
 					</div>
 				</div>
 			</div>

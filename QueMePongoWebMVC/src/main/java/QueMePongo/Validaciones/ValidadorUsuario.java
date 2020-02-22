@@ -20,14 +20,6 @@ public void validate(Object target, Errors errors) {
 	
 	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "codigoUsuario", "field.codigoUsuario.required", 
 			"El codigo de Usuario es obligatoria");
-	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mail", "field.mail.required", 
-			"El email es obligatoria");
-	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "field.password.required", 
-			"El password es obligatorio");
-	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "field.nombre.required", 
-			"El nombre es obligatorio");
-	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "apellido", "field.apellido.required", 
-			"El apellido es obligatorio");
-	
+
 }
 }

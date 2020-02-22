@@ -1,8 +1,11 @@
 package QueMePongo.Dominio;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 //import Desarrollo.Enumerados.EnumCapa;
+
+import QueMePongo.DAO.JPAUtil;
 
 
 @Entity
@@ -103,5 +106,15 @@ public class TipoPrenda  implements Serializable{
 
 	public void setTipoEvento(TipoEvento tipoEvento) {
 		this.tipoEvento = tipoEvento;
+	}
+	public static List<TipoPrenda> ListarTiposDePrenda(){
+		JPAUtil trn = new JPAUtil();
+	return 	trn.transaccion().tipoPrenda().listado();	
+	}
+	public static TipoPrenda buscarPorId(int id) {
+		JPAUtil trn = new JPAUtil();
+		return trn.transaccion().tipoPrenda().buscarPorId(id);
+
+	
 	}
 }

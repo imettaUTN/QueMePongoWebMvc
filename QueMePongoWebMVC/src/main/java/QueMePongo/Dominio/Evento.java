@@ -24,6 +24,10 @@ import QueMePongo.DAO.JPAUtil;
 @Table(name = "Evento")
 public class Evento  implements Serializable{
 	
+	public LocalDateTime getFechaEvento() {
+		return fechaEvento;
+	}
+
 	/**
 	 * 
 	 */

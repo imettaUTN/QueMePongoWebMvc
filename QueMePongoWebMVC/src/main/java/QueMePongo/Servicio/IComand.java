@@ -6,5 +6,5 @@ import QueMePongo.Dominio.Evento;
 
 public interface IComand {
 
-public void Execute(Evento evento) throws IOException ;
+public Evento Execute(Evento evento) throws IOException ;
 }

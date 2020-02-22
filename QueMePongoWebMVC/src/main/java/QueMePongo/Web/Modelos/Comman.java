@@ -11,6 +11,7 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import QueMePongo.Dominio.*;
+import QueMePongo.Dominio.Enumerados.EnumCapa;
 
 public class Comman {
 	
@@ -61,7 +62,7 @@ public class Comman {
 	    return null;
 	}
 		
-	public static List<PrendaModelo> ConvertPrendaToModel(List<Prenda> prendas){
+	public static List<PrendaModelo> ConvertPrendaToModelList(List<Prenda> prendas){
 		List<PrendaModelo> Lprenda = new ArrayList<PrendaModelo>();
 		
 		for( Prenda prenda : prendas) {
@@ -71,8 +72,46 @@ public class Comman {
 		return Lprenda;
 	}
 	
+	public static List<TipoPrendaModelo> ConvertTipoPrendaToModelList(List<TipoPrenda> tipoPrenda){
+		List<TipoPrendaModelo> Lprenda = new ArrayList<TipoPrendaModelo>();
+		
+		for( TipoPrenda prenda : tipoPrenda) {
+			TipoPrendaModelo Mprenda = new TipoPrendaModelo();
+			Mprenda.setCodTipoPrenda(prenda.getCodTipoPrenda());
+			Mprenda.setDescripcion(prenda.getDescripcion());
+			Lprenda.add(Mprenda);
+		}
+		return Lprenda;
+	}
+	
+	public static List<GuardarropaModelo> ConvertTipoGuardarropaToModelList(List<Guardarropa> guardarropa){
+		List<GuardarropaModelo> Lprenda = new ArrayList<GuardarropaModelo>();		
+		for( Guardarropa prenda : guardarropa) {
+			GuardarropaModelo Mcategoria = new GuardarropaModelo();
+			Mcategoria.setCodigoGuardarropa(prenda.getId());
+			Mcategoria.setDescripcion(prenda.getDescripcion());
+			Lprenda.add(Mcategoria);
+		}
+		return Lprenda;
+	}
+	
 	public static PrendaModelo converPrendaModel(Prenda prenda) {
 		PrendaModelo Mprenda = new PrendaModelo(prenda.getDescripcion(), prenda.getColorPrimario(), prenda.getColorSecundario(), prenda.getCategoria().getDescripcion(), prenda.getCodPrenda(), prenda.getGuardarropa().getId());
        return Mprenda;
+	}
+	
+	public static Prenda FromModelToClasPrenda(PrendaModelo pm){
+		
+			Prenda p = new Prenda();
+			p.setColorPrimario(pm.getColorPrimario());		
+			p.setColorSecundario(pm.getColorSecundario());
+			p.setDescripcion(pm.getDescripcion());
+			Guardarropa g = Guardarropa.buscarPorId(pm.getCodigoGuardarropa());
+			p.setGuardarropa(g);
+            TipoPrenda tp = TipoPrenda.buscarPorId(pm.getTipoPrenda());
+            p.setTipoPrenda(tp);
+            p.setNumeroDeCapa(EnumCapa.Primera);
+		
+		return p;
 	}
 }

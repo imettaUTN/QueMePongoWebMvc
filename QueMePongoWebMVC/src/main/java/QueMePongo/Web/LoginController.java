@@ -10,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 import QueMePongo.Dominio.Login;
 import QueMePongo.Dominio.Usuario;
 import QueMePongo.Validaciones.ValidadorLogin;
+import QueMePongo.Web.Mocks.PrendaMock;
+import QueMePongo.Web.Mocks.UsuarioMock;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,18 +39,22 @@ public class LoginController {
 	public String ValidarLogin(@Valid Login login, BindingResult result, HttpServletRequest request) throws Exception {
 		if (result.hasErrors()) {
 
-			return "redirect:/login.htm";
+			return "login.htm";
 		}
 
-		this.setErrorEnCredenciales(login.ValidarLogin());
+		//this.setErrorEnCredenciales(login.ValidarLogin());
+		this.setErrorEnCredenciales(false);
 		if (this.isErorEnCredenciales()) {
 			
 			return "redirect:/login.htm";
 		}
 		logger.info("Guardando login en sesion");
 		HttpSession sesion = request.getSession();
-		Usuario user = new Usuario();
-		user = user.recuperar(login.getEmail());
+		UsuarioMock mock = new UsuarioMock();
+        Usuario user =  new Usuario();
+		 user = mock.GetAdmUsuario();
+		//user = user.recuperar(login.getEmail());
+		
 		sesion.setAttribute("Usuario", user);
 
 		return "redirect:/menu.htm";

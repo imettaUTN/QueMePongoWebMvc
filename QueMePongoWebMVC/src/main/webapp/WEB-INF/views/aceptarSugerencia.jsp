@@ -27,70 +27,129 @@ input {
 }
 </style>
 <body>
-	<h1 class="text-center text-uppercase"  style="color:green">aceptación</h1>
+	<h1 class="text-center text-uppercase"  style="color:green">Aceptar sugerencia</h1>
 	<br>
 	<div class="container">
 		<div class="card-deck mb-3    text-center">
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[0].categoria}</h3>
+					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[0].descripcionCat}</h3>
 				</div>
 				<div class="card-body">
 					<ul class="list-unstyled mt-3 mb-4">
-						<li class="text-left "><u>Descripcion:</u></li>
+						<li class="text-left "><ins>Descripcion:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].descripcion}</li>
-						<li class="text-left "><u>Color Primario:</u></li>
+						<li class="text-left "><ins>Color Primario:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].colorPrimario}</li>
-						<li class="text-left "><u>Color Secundario:</u></li>
+						<li class="text-left "><ins>Color Secundario:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].colorSecundario}</li>
 					</ul>
 				</div>
 			</div>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[1].categoria}</h3>
+					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[1].descripcionCat}</h3>
 				</div>
 				<div class="card-body">
 					<ul class="list-unstyled mt-3 mb-4">
-						<li class="text-left "><u>Descripcion:</u></li>
+						<li class="text-left "><ins>Descripcion:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].descripcion}</li>
-						<li class="text-left "><u>Color Primario:</u></li>
+						<li class="text-left "><ins>Color Primario:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].colorPrimario}</li>
-						<li class="text-left "><u>Color Secundario:</u></li>
+						<li class="text-left "><ins>Color Secundario:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].colorSecundario}</li>
 					</ul>
 				</div>
 			</div>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[2].categoria}</h3>
+					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[2].descripcionCat}</h3>
 				</div>
 				<div class="card-body">
 					<ul class="list-unstyled mt-3 mb-4">
-						<li class="text-left "><u>Descripcion:</u></li>
+						<li class="text-left "><ins>Descripcion:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].descripcion}</li>
-						<li class="text-left "><u>Color Primario:</u></li>
+						<li class="text-left "><ins>Color Primario:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].colorPrimario}</li>
-						<li class="text-left "><u>Color Secundario:</u></li>
+						<li class="text-left "><ins>Color Secundario:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].colorSecundario}</li>
 					</ul>
 				</div>
 			</div>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[3].categoria}</h3>
+					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[3].descripcionCat}</h3>
 				</div>
 				<div class="card-body">
 					<ul class="list-unstyled mt-3 mb-4">
-						<li class="text-left "><u>Descripcion:</u></li>
+						<li class="text-left "><ins>Descripcion:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].descripcion}</li>
-						<li class="text-left "><u>Color Primario:</u></li>
+						<li class="text-left "><ins>Color Primario:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].colorPrimario}</li>
-						<li class="text-left "><u>Color Secundario:</u></li>
+						<li class="text-left "><ins>Color Secundario:</ins></li>
 						<li class="text-left ">${sugerencia.listaPrendas[3].colorSecundario}</li>
 					</ul>
 				</div>
 			</div>
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[4].descripcionCat}</h3>
+				</div>
+				<div class="card-body">
+					<ul class="list-unstyled mt-3 mb-4">
+						<li class="text-left "><ins>Descripcion:</ins></li>
+						<li class="text-left ">${sugerencia.listaPrendas[4].descripcion}</li>
+						<li class="text-left "><ins>Color Primario:</ins></li>
+						<li class="text-left ">${sugerencia.listaPrendas[4].colorPrimario}</li>
+						<li class="text-left "><ins>Color Secundario:</ins></li>
+						<li class="text-left ">${sugerencia.listaPrendas[4].colorSecundario}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[5].descripcionCat}</h3>
+				</div>
+				<div class="card-body">
+					<ul class="list-unstyled mt-3 mb-4">
+						<li class="text-left "><ins>Descripcion:</ins></li>
+						<li class="text-left ">${sugerencia.listaPrendas[5].descripcion}</li>
+						<li class="text-left "><ins>Color Primario:</ins></li>
+						<li class="text-left ">${sugerencia.listaPrendas[5].colorPrimario}</li>
+						<li class="text-left "><ins>Color Secundario:</ins></li>
+						<li class="text-left ">${sugerencia.listaPrendas[5].colorSecundario}</li>
+					</ul>
+				</div>
+				<div class="card mb-4 shadow-sm">
+					<div class="card-header">
+						<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[6].descripcionCat}</h3>
+					</div>
+					<div class="card-body">
+						<ul class="list-unstyled mt-3 mb-4">
+							<li class="text-left "><ins>Descripcion:</ins></li>
+							<li class="text-left ">${sugerencia.listaPrendas[6].descripcion}</li>
+							<li class="text-left "><ins>Color Primario:</ins></li>
+							<li class="text-left ">${sugerencia.listaPrendas[6].colorPrimario}</li>
+							<li class="text-left "><ins>Color Secundario:</ins></li>
+							<li class="text-left ">${sugerencia.listaPrendas6].colorSecundario}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="card mb-4 shadow-sm">
+					<div class="card-header">
+						<h3 class="card-title pricing-card-title">${sugerencia.listaPrendas[7].descripcionCat}</h3>
+					</div>
+					<div class="card-body">
+						<ul class="list-unstyled mt-3 mb-4">
+							<li class="text-left "><ins>Descripcion:</ins></li>
+							<li class="text-left ">${sugerencia.listaPrendas[7].descripcion}</li>
+							<li class="text-left "><ins>Color Primario:</ins></li>
+							<li class="text-left ">${sugerencia.listaPrendas[7].colorPrimario}</li>
+							<li class="text-left "><ins>Color Secundario:</ins></li>
+							<li class="text-left ">${sugerencia.listaPrendas[7].colorSecundario}</li>
+						</ul>
+					</div>
+				</div>
 		</div>
 
 

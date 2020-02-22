@@ -27,49 +27,44 @@ input {
 }
 </style>
 <body>
-	<h1>
-		<fmt:message key="heading" />
-	</h1>
-	<p>
-		<fmt:message key="greeting" />
-	</p>
+	<h6 class="text-center text-uppercase small">Nuevo Usuario</h6>
 	<br>
 	<form:form method="post" commandName="Usuario">
 		<table>
 			<tbody>
 			    <tr>
-					<td>codigo usuario:</td>
+					<td class="text-center text-uppercase">codigo usuario:</td>
 					<td><input type="text" name="codigoUsuario" class="form-control"></td>
 					<td><form:errors path="codigoUsuario" cssClass="campoConError" /></td>
 				</tr>
 				<tr>
-					<td>Nombre:</td>
+					<td class="text-center text-uppercase">Nombre:</td>
 					<td><input type="text" name="Nombre" class="form-control"></td>
 					<td><form:errors path="nombre" cssClass="campoConError" /></td>
 				</tr>
 				<tr>
-					<td>Apellido:</td>
+					<td class="text-center text-uppercase">Apellido:</td>
 					<td><input type="text" name="Apellido" class="form-control"></td>
 					<td><form:errors path="apellido" cssClass="campoConError" /></td>
 				</tr>
 				<tr>
-					<td>Email:</td>
+					<td class="text-center text-uppercase">Email:</td>
 					<td><input type="text" name="mail" class="form-control"></td>
 					<td><form:errors path="mail" cssClass="campoConError" /></td>
 				</tr>
 				<tr>
-					<td>Password:</td>
+					<td class="text-center text-uppercase">Password:</td>
 					<td><input type="password" name="Password"
 						class="form-control"></td>
 					<td><form:errors path="password" cssClass="campoConError" /></td>
 				</tr>
 				<tr>
 					<td>Tipo usuario</td>
-					<td><select name="codigoPerfil">
+					<td><select name="codigoPerfil"  class="form-control">
 						
 							<option value="1">Administrador</option>
-							<option value="2">Publico</option>
-							<option value="3">Privado</option>
+							<option value="2">Basico</option>
+							<option value="3">Premiun</option>
 							
 					</select></td>
 				</tr>

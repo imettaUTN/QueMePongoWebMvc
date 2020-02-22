@@ -1,8 +1,5 @@
 package QueMePongo.Web;
 
-import java.util.ArrayList;
-import java.util.List;
-import QueMePongo.Web.Mocks.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,29 +11,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import QueMePongo.Dominio.Categoria;
-import QueMePongo.Dominio.Evento;
-import QueMePongo.Dominio.Guardarropa;
-import QueMePongo.Dominio.Prenda;
-import QueMePongo.Dominio.Sugerencia;
-import QueMePongo.Dominio.TipoPrenda;
-import QueMePongo.Dominio.Usuario;
-import QueMePongo.Dominio.Enumerados.EnumCapa;
-import QueMePongo.Web.Modelos.Comman;
-import QueMePongo.Web.Modelos.SugerenciaListContainerModel;
+import QueMePongo.Dominio.*;
+import QueMePongo.Web.Modelos.*;
 
 @Controller
 
 public class SugerenciaController {
 	
 
-	@RequestMapping(value = "/Sugerencias.htm" ,method = RequestMethod.GET)
+	@RequestMapping(value = "/MostrarSugerencias.htm" ,method = RequestMethod.GET)
 	public ModelAndView MostrarSugerencias(Model model ,HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("sugerencias");
 		SugerenciaListContainerModel prendasModelosList = new SugerenciaListContainerModel();
 		int i = 1;
 		
-		Evento ev = null ;
+		Evento ev = new Evento() ;
 		HttpSession sesion = request.getSession();
 
 		if (sesion.getAttribute("evento") != null) {
@@ -44,7 +33,7 @@ public class SugerenciaController {
 		}
 				
 		for(Sugerencia sugerencia : ev.getSugerencias() ) {
-			prendasModelosList.setListaPrendas(Comman.ConvertPrendaToModel(sugerencia.getListaPrendasSugeridas()));
+			prendasModelosList.setListaPrendas(Comman.ConvertPrendaToModelList(sugerencia.getListaPrendasSugeridas()));
 			model.addAttribute("Sugerencia" + i, prendasModelosList);
 			modelAndView.addObject("codPrendas"+ i, prendasModelosList.ObtenerClaveDatosBasicosSug() +  ",MCS=" +sugerencia.getMaxCapaSuperior() + ",MCI=" +sugerencia.getMaxCapaInferior());
 			i++;
@@ -57,26 +46,15 @@ public class SugerenciaController {
 		ModelAndView modelAndView = new ModelAndView("rechazarSugerencia");
 		SugerenciaListContainerModel userList = new SugerenciaListContainerModel();
 		Sugerencia sug = new Sugerencia();
-		
-		//este es el que va
-	//	sug.RecostruirSugerenciasMap(codigosPrendas(codPrendas));
-		//test
-		sug = getListPrenda().getSugerencias().get(0);
-       sug.RecostruirSugerenciasMap();
-		
-       //
-       sug.setMaxCapaInferior(buscarNivelCapa("MCI", codPrendas));
-		sug.setMaxCapaSuperior(buscarNivelCapa("MCS", codPrendas));
-
-		
+		sug.RecostruirSugerenciasMap(codigosPrendas(codPrendas));
+		sug.setMaxCapaInferior(buscarNivelCapa("MCI", codPrendas));
+		sug.setMaxCapaSuperior(buscarNivelCapa("MCS", codPrendas));		
 		//Esto es la posta
-		/*for(String idPrenda : codPrendas.split(",")) {
-			if(! idPrenda.contains("C")) {
+		for(String idPrenda : codigosPrendas(codPrendas).split(",")) {
 			userList.addPrenda(Comman.converPrendaModel(Prenda.buscarPorCodigo(Integer.valueOf(idPrenda))));		    
 		}
-			}*/
  
-   userList.setListaPrendas(Comman.ConvertPrendaToModel(getListPrenda().getSugerencias().get(0).getListaPrendasSugeridas()));
+  
 		modelAndView.addObject("sugerencia", userList);
 		HttpSession sesion = request.getSession();
 		sesion.setAttribute("SugerenciaRechazada", sug);
@@ -89,35 +67,24 @@ public class SugerenciaController {
 		HttpSession sesion = request.getSession();
         Sugerencia sug  = (Sugerencia) sesion.getAttribute("SugerenciaRechazada");
 		sug.setMotivoDeRechazo(sugerencia.getMotivoRechazo());
-		//sug.RechazarSugerencia();
+		sug.rechazarSugerencia();
 		return "redirect:/menu.htm";
 	}
 	
 	@RequestMapping(value = "/AceptarSugerencia.htm",method = RequestMethod.GET )
-	public ModelAndView AceptarSugerencia(@RequestParam("codPrendas") String codPrendas, Model model,HttpServletRequest request) {
+	public ModelAndView AceptarSugerencia(@RequestParam("codPrendas") String codPrendas, PrendaModelo model,HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("aceptarSugerencia");
 		SugerenciaListContainerModel userList = new SugerenciaListContainerModel();
 		Sugerencia sug = new Sugerencia();
 		
 		//este es el que va
-	//	sug.RecostruirSugerenciasMap(codigosPrendas(codPrendas));
-		//test
-		sug = getListPrenda().getSugerencias().get(0);
-       sug.RecostruirSugerenciasMap();
-		
-       //
+	sug.RecostruirSugerenciasMap(codigosPrendas(codPrendas));	
        sug.setMaxCapaInferior(buscarNivelCapa("MCI", codPrendas));
 		sug.setMaxCapaSuperior(buscarNivelCapa("MCS", codPrendas));
 
-		
-		//Esto es la posta
-		/*for(String idPrenda : codPrendas.split(",")) {
-			if(! idPrenda.contains("C")) {
-			userList.addPrenda(Comman.converPrendaModel(Prenda.buscarPorCodigo(Integer.valueOf(idPrenda))));		    
-		}
-			}*/
+		for(String idPrenda : codigosPrendas(codigosPrendas(codPrendas)).split(",")) {
+			userList.addPrenda(Comman.converPrendaModel(Prenda.buscarPorCodigo(Integer.valueOf(idPrenda))));}
  
-   userList.setListaPrendas(Comman.ConvertPrendaToModel(getListPrenda().getSugerencias().get(0).getListaPrendasSugeridas()));
 		modelAndView.addObject("sugerencia", userList);
 		HttpSession sesion = request.getSession();
 		sesion.setAttribute("SugerenciaAceptada", sug);
@@ -128,9 +95,11 @@ public class SugerenciaController {
 	public String AceptarSugerencia( SugerenciaListContainerModel sugerencia, BindingResult result, HttpServletRequest request) throws Exception {
 		HttpSession sesion = request.getSession();
         Sugerencia sug  = (Sugerencia) sesion.getAttribute("SugerenciaAceptada");
-		//sug.AceptarSugerencia();
+        Evento ev = (Evento) sesion.getAttribute("evento");
+	    sug.AceptarSugerencia(ev.getCodEvento());
 		return "redirect:/menu.htm";
 	}
+
 	private String codigosPrendas(String codigoPrenda) 
 	{
 		String cod= "";
@@ -157,10 +126,10 @@ public class SugerenciaController {
     	}
 		return -1;
 	}
-	private Evento getListPrenda() {
+	/*private Evento getListPrenda() {
 		EventoMock ev = new EventoMock();
 		return ev.getEvento();
-	}
+	}*/
 	
 
 }

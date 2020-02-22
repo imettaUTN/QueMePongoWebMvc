@@ -1,5 +1,6 @@
 package QueMePongo.Web;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import QueMePongo.Dominio.EstadoEvento;
 import QueMePongo.Dominio.Evento;
 import QueMePongo.Dominio.Usuario;
+import QueMePongo.Servicio.CommandObtenerClima;
 import QueMePongo.Validaciones.ValidadorEvento;
 import QueMePongo.Web.Mocks.EventoMock;
 import QueMePongo.Web.Modelos.EventoModelo;
@@ -32,10 +34,7 @@ import QueMePongo.Web.Modelos.EventosListContainerModel;
 public class EventoController {
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.setValidator(new ValidadorEvento()); // registramos el validador
-	}
+	
 
 	@RequestMapping(value = "/CargarEvento.htm", method = RequestMethod.GET)
 	public ModelAndView BackEvento(HttpServletRequest request) throws Exception {
@@ -52,23 +51,21 @@ public class EventoController {
 	}
 
 	@RequestMapping(value = "/CargarEvento.htm", method = RequestMethod.POST)
-	public String CargarEvento(@Valid Evento evento, BindingResult result, HttpServletRequest request)
+	public String CargarEvento( Evento evento, BindingResult result, HttpServletRequest request)
 			throws Exception {
-
-		if (result.hasErrors()) {
-
-			return "redirect:/CargarEvento.htm";
-		}
+		
 		evento.setEstado(new EstadoEvento(1, "nuevo"));
 		HttpSession sesion = request.getSession();
-		LocalDate localDate = LocalDate.parse(evento.getFecha());
-		LocalDateTime endOfDate = LocalTime.MAX.atDate(localDate);
-		evento.setFechaEvento(endOfDate);
+		int anio, mes, dia;
+		dia = Integer.valueOf(evento.getFecha().split("/")[0]);
+		mes = Integer.valueOf(evento.getFecha().split("/")[1]);
+		anio = Integer.valueOf(evento.getFecha().split("/")[2]);
+		evento.setearFechaEvento(anio, mes, dia, 0, 0);
 		Usuario user = (Usuario) sesion.getAttribute("Usuario");
 		evento.setUsuario(user);
-		sesion.setAttribute("nuevoEvento", evento);
+		evento.guardar();
 
-		return "redirect:/CargarEvento";
+		return "menu";
 	}
 
 	@RequestMapping(value = "/ListarEvento.htm", method = RequestMethod.GET)
@@ -82,16 +79,18 @@ public class EventoController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/ProcesarEvento.htm", method = RequestMethod.GET)
-	public String AceptarSugerencia(@RequestParam("IdEvento") String idEvento, EventoModelo model,
-			HttpServletRequest request) {
-		// ACA LLAMO AL ABM DE SUGERENCIA
+	@RequestMapping(value = "/ProcesarEvento.htm")
+	public String AceptarSugerencia(@RequestParam("IdEvento") String idEvento ,HttpServletRequest request) throws IOException {
 		Evento event = new Evento();
 		event = Evento.BuscarEvento(Integer.valueOf(idEvento));
-		HttpSession sesion = request.getSession();
+	   CommandObtenerClima command = new CommandObtenerClima();
+	   event =command.Execute(event);
+	   //CAMBIAR ESTADO 
+       event.guardar(); 
+	   HttpSession sesion = request.getSession();
 		sesion.setAttribute("evento", event);	
-
-		return "redirect:/Sugerencias.htm";
+    
+		return "redirect:/MostrarSugerencias.htm";
 	}
 
 }

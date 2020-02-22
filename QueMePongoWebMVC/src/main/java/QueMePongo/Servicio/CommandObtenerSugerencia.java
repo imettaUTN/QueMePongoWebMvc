@@ -5,7 +5,7 @@ import QueMePongo.Dominio.Evento;
 
 public class CommandObtenerSugerencia implements IComand {
 
-	public void Execute(Evento evento) throws IOException  {
+	public Evento Execute(Evento evento) throws IOException  {
 		
 		/*
 		Guardarropa guardaropaAsociado = evento.getGuardaropaAsociado();
@@ -26,6 +26,7 @@ public class CommandObtenerSugerencia implements IComand {
 		
 		
 		//evento.setEstado(EnumEstadoEvento.ENPROCESO);
+		return null;
 	}
 
 }

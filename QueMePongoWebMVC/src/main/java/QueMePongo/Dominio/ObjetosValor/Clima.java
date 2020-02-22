@@ -4,9 +4,9 @@ public class Clima {
 	
 private int temperaturaMinima;
 private int temperaturaMaxima;
-private LocalDate fecha;
+private LocalDateTime fecha;
 
-public Clima(int temMinima, int temMaxima, LocalDate fecha) {
+public Clima(int temMinima, int temMaxima, LocalDateTime fecha) {
 	this.setFecha(fecha);
 	this.setTemperaturaMaxima(temMaxima);
 	this.setTemperaturaMinima(temMinima);
@@ -23,10 +23,10 @@ public int getTemperaturaMaxima() {
 public void setTemperaturaMaxima(int temperaturaMaxima) {
 	this.temperaturaMaxima = temperaturaMaxima;
 }
-public LocalDate getFecha() {
+public LocalDateTime getFecha() {
 	return fecha;
 }
-public void setFecha(LocalDate fecha) {
+public void setFecha(LocalDateTime fecha) {
 	this.fecha = fecha;
 }
 

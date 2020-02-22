@@ -1,90 +1,58 @@
-<%@ include file="/WEB-INF/views/include.jsp" %>
-<%-- Redirected because we can't set the welcome page to a virtual URL. --%>
+<!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Menu Desplegable</title>
-		<style type="text/css">
-			
-			* {
-				margin:0px;
-				padding:0px;
-			}
-			
-			#header {
-				margin:auto;
-				width:500px;
-				font-family:Arial, Helvetica, sans-serif;
-			}
-			
-			ul, ol {
-				list-style:none;
-			}
-			
-			.nav > li {
-				float:left;
-			}
-			
-			.nav li a {
-				background-color:#000;
-				color:#fff;
-				text-decoration:none;
-				padding:10px 12px;
-				display:block;
-			}
-			
-			.nav li a:hover {
-				background-color:#434343;
-			}
-			
-			.nav li ul {
-				display:none;
-				position:absolute;
-				min-width:140px;
-			}
-			
-			.nav li:hover > ul {
-				display:block;
-			}
-			
-			.nav li ul li {
-				position:relative;
-			}
-			
-			.nav li ul li ul {
-				right:0px;
-				top:0px;
-			}
-			
-		</style>
-	</head>
-	<body>
-		<div id="header">
-			<ul class="nav">
-	
-				<li><a href="">Usuario</a>
-				   <ul>
-						<li><a href="/QueMePongoWebMVC/usuario.htm">Alta Usuario</a></li>
-				   </ul>
-				</li>
-				<li><a href="">Guardarropa</a>
-					<ul>
-						<li><a href="/QueMePongoWebMVC/guardarropa.htm">Crear Prendas</a></li>
-						<li><a href="">ABM Gurdarropa</a></li>						
-					</ul>
-				</li>
-				<li><a href="">Tablas</a>
-					<ul>
-						<li><a href="">Prendas</a></li>
-						<li><a href="">Colores</a></li>
-						<li><a href="">Categoria</a></li>
-					</ul>
-				</li>
-				<li><a href="">Evento</a>
-				 <ul>
-					<li><a href="">ABM Evento</a></li>
-				 </ul>
-				 </li>
-			</ul>
-		</div>
-	</body>
+  <head>
+     <style>
+  	.menuCSS3 ul {
+		display: flex;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	.menuCSS3 a {
+		display: block;
+		padding: 2em;
+		background-color: #7F7977;
+		text-decoration: none;
+		color: #FEFEFE;
+	}
+	.menuCSS3 a:hover {
+		background-color: #434343;
+	}
+	.menuCSS3 ul li ul {
+		display: none;
+	}
+	.menuCSS3 ul li a:hover + ul, .menuCSS3 ul li ul:hover {
+		display: block;
+	}
+
+  </style>
+  
+  </head>
+  <body>
+   <nav class="menuCSS3">
+		<ul>
+			<li><a href="#">Inicio</a></li>
+			<li><a href="#">Usuario</a>
+				<ul>
+					<li><a href="/QueMePongoWebMVC/usuario.htm">Alta Usuario</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Guardarropa</a>
+				<ul>
+					<li><a href="/QueMePongoWebMVC/guardarropa.htm">Guardarropa</a></li>
+					<li><a href="/QueMePongoWebMVC/Prenda.htm">Prenda</a></li>
+				</ul>
+
+			</li>
+			<li><a href="#">Evento</a>
+				<ul>
+					<li><a href="/QueMePongoWebMVC/CargarEvento.htm">Crear Evento</a></li>
+					<li><a href="/QueMePongoWebMVC/ListarEventos.htm">Listado Eventos</a></li>
+				</ul>
+
+			</li>
+		</ul>
+	</nav>
+
+  </body>
 </html>

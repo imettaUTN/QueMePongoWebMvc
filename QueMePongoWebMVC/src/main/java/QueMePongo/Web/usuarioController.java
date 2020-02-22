@@ -45,7 +45,7 @@ public class usuarioController {
     user.setCodPerfil(perfil);
 	HttpSession sesion = request.getSession();
 	sesion.setAttribute("Usuario", user);
-    user.guardar();
+  //  user.guardar();
        
      return "redirect:/menu.htm";
  }

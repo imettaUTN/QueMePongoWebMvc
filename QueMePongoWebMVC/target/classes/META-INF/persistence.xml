@@ -8,19 +8,21 @@
         Persistence unit JPA with Hibernate
         </description>
         
-        <class>QueMePongo.Dominio.Perfil</class>
-        <class>QueMePongo.Dominio.Usuario</class>
-        <class>QueMePongo.Dominio.Guardarropa</class>
-        <class>QueMePongo.Dominio.Prenda</class>
-       	<class>QueMePongo.Dominio.Color</class>
-       	<class>QueMePongo.Dominio.TipoPrenda</class>
-        <class>QueMePongo.Dominio.TipoTela</class>
-        <class>QueMePongo.Dominio.NivelDeAbrigo</class>
-        <class>QueMePongo.Dominio.TipoEvento</class>
-        <class>QueMePongo.Dominio.Evento</class>
-        <class>QueMePongo.Dominio.Sugerencia</class>
-        <class>QueMePongo.Dominio.EstadoEvento</class>
+        <class>QueMePongo.Dominio.Categoria</class>
+        <class>QueMePongo.Dominio.Color</class>
         <class>QueMePongo.Dominio.ColoresRechazados</class>
+        <class>QueMePongo.Dominio.EstadoEvento</class>
+        <class>QueMePongo.Dominio.Evento</class>
+        <class>QueMePongo.Dominio.Guardarropa</class>
+        <class>QueMePongo.Dominio.Login</class>
+        <class>QueMePongo.Dominio.NivelDeAbrigo</class>
+        <class>QueMePongo.Dominio.Perfil</class>
+        <class>QueMePongo.Dominio.Prenda</class>
+        <class>QueMePongo.Dominio.Sugerencia</class>
+        <class>QueMePongo.Dominio.TipoEvento</class>
+        <class>QueMePongo.Dominio.TipoPrenda</class>
+        <class>QueMePongo.Dominio.TipoTela</class>
+        <class>QueMePongo.Dominio.Usuario</class>
       
         <properties>
 

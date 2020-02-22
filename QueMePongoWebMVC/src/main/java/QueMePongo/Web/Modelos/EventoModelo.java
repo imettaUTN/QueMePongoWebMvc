@@ -6,12 +6,13 @@ public class EventoModelo {
 private int codEvento;
 private String descripcion;
 private String fecha;
+private String estado;
 
-
-public EventoModelo(int codEv, String desc, String fecha) {
+public EventoModelo(int codEv, String desc, String fecha, String estado) {
 	this.setCodEvento(codEv);
 	this.setDescripcion(desc);
 	this.setFecha(fecha);
+	this.setEstado(estado);
 }
 
 public int getCodEvento() {
@@ -31,6 +32,14 @@ public String getFecha() {
 }
 public void setFecha(String fecha) {
 	this.fecha = fecha;
+}
+
+public String getEstado() {
+	return estado;
+}
+
+public void setEstado(String estado) {
+	this.estado = estado;
 }
 
 

@@ -57,6 +57,10 @@ public class Guardarropa  implements Serializable{
 		trn.transaccion().guardarropa().persistir(this);
 	}
 	
+	public static Guardarropa buscarPorId(int idGuardarropa) {
+		JPAUtil trn = new JPAUtil();
+		return trn.transaccion().guardarropa().buscarPorId(idGuardarropa);
+	}
 
 	
 	
