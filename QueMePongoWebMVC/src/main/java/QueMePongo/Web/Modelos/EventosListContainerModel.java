@@ -10,7 +10,7 @@ public class EventosListContainerModel {
 	public void ConvertirAListaModelo(List<Evento> eventos){
 		for(Evento ev: eventos) {
 			
-			this.listaPrendas.add(new EventoModelo(ev.getCodEvento(), ev.getDescripcion(), ev.getFecha().toString(), ev.getEstado().getDescripcion()));
+			this.listaPrendas.add(new EventoModelo(ev.getCodEvento(), ev.getDescripcion(), ev.obtenerFechaEvento(), ev.getEstado().getDescripcion()));
 		}
 	}
 	

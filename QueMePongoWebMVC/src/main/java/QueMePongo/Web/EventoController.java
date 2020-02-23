@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -73,13 +75,22 @@ public class EventoController {
 		return "redirect:/menu.htm";
 	}
 
-	@RequestMapping(value = "/ListarEvento.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/ListarEventos.htm")
 	public ModelAndView ListarEventos(HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("ListarEventos");
+		
+		HttpSession sesion = request.getSession();
+		
+		Usuario user = (Usuario) sesion.getAttribute("Usuario");
+	
+		JPAUtil conexion = new JPAUtil();
+		List<Evento> listaEventos = new ArrayList<Evento>();
+		listaEventos = conexion.transaccion().usuario().eventos(user);
 		EventosListContainerModel lista = new EventosListContainerModel();
-		EventoMock em = new EventoMock();
+		
 		// aca convierto la lista de eventos del usuario a los eventos modelo.
-		lista.ConvertirAListaModelo(em.getEventos());
+		lista.ConvertirAListaModelo(listaEventos);
+		
 		modelAndView.addObject("eventos", lista);
 		return modelAndView;
 	}

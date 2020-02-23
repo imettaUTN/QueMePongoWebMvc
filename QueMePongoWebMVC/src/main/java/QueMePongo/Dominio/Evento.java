@@ -252,4 +252,10 @@ public class Evento  implements Serializable{
 		}
 	}
 	*/
+	
+	public String obtenerFechaEvento() {
+		
+		
+		return this.fechaEvento.toString();
+	}
 }
