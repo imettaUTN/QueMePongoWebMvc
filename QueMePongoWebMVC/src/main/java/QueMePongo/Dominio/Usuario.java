@@ -43,6 +43,7 @@ public class Usuario  implements Serializable{
 	@Column(name = "Apellido")
 	private String apellido; 
 	
+	@Transient
 	private int codigoPerfil;
 
 	//@ManyToOne(cascade = CascadeType.ALL)

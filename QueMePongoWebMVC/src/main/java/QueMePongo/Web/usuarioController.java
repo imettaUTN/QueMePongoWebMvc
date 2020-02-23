@@ -48,7 +48,7 @@ public class usuarioController {
 	 }
      */
     
-    user.setCodPerfil(perfil);
+    user.setCodPerfil(perfil); 
 	HttpSession sesion = request.getSession();
 	sesion.setAttribute("Usuario", user);
 	user.guardar();

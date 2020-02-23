@@ -29,7 +29,7 @@ input {
 <body>
 	<h6 class="text-center text-uppercase small">Nuevo Usuario</h6>
 	<br>
-	<form:form method="post" commandName="Usuario">
+	<form:form method="post" commandName="usuario">
 		<table>
 			<tbody>
 			    <tr>
@@ -63,8 +63,8 @@ input {
 					<td><select name="codigoPerfil"  class="form-control">
 						
 							<option value="1">Administrador</option>
-							<option value="2">Basico</option>
-							<option value="3">Premiun</option>
+							<option value="2">Estándar</option>
+							<option value="3">Premium</option>
 							
 					</select></td>
 				</tr>
