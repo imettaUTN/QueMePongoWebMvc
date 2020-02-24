@@ -1,5 +1,10 @@
 package QueMePongo.Testing;
 import QueMePongo.Dominio.*;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import QueMePongo.DAO.*;
 import QueMePongo.Web.Modelos.*;
 
@@ -17,7 +22,7 @@ public class TestDeUsuario {
 	private Prenda prendaNueva = new Prenda();
 	
 	@Before
-	public void init(){
+	public void init() throws Exception{
 		
 		perfilBasico = jpa.transaccion().perfil().buscarPorId(2);
 		

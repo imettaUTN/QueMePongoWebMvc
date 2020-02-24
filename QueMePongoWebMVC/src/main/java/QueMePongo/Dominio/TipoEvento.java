@@ -1,7 +1,10 @@
 package QueMePongo.Dominio;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
+
+import QueMePongo.DAO.JPAUtil;
 
 
 @Entity
@@ -37,4 +40,8 @@ public class TipoEvento  implements Serializable{
 		this.descripcion = descripcion;
 	}
 	
+	public static List<TipoEvento> ListadoEvento(){
+		JPAUtil trn = new JPAUtil();
+		 return trn.transaccion().tipoEventos().listado();
+	}
 }

@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import QueMePongo.Dominio.EstadoEvento;
 import QueMePongo.Dominio.Evento;
+import QueMePongo.Dominio.TipoEvento;
 import QueMePongo.DAO.*;
 import QueMePongo.Dominio.Usuario;
 import QueMePongo.Servicio.CommandObtenerClima;
@@ -49,6 +50,7 @@ public class EventoController {
 			ev = (Evento) sesion.getAttribute("nuevoEvento");
 		}
 
+		modelAndView.addObject("tiposEventos", TipoEvento.ListadoEvento());
 		modelAndView.addObject("evento", ev);
 		return modelAndView;
 	}
@@ -57,9 +59,8 @@ public class EventoController {
 	public String CargarEvento( Evento evento, BindingResult result, HttpServletRequest request)
 			throws Exception {
 		
-		JPAUtil conexion = new JPAUtil();
-		EstadoEvento estado = new EstadoEvento();
-		estado = conexion.transaccion().estados().buscarPorId(1);
+		
+		EstadoEvento estado = EstadoEvento.BuscarPorId(1);
 		
 		evento.setEstado(estado);
 		HttpSession sesion = request.getSession();
@@ -70,6 +71,8 @@ public class EventoController {
 		evento.setearFechaEvento(anio, mes, dia, 0, 0);
 		Usuario user = (Usuario) sesion.getAttribute("Usuario");
 		evento.setUsuario(user);
+		
+		//IMETTA:EN EL CAMPO tipoEvt esta el id de tipo de evento seleccionado por el usuario. Ver para que se usa y como integrarlo
 		evento.guardar();
 
 		return "redirect:/menu.htm";

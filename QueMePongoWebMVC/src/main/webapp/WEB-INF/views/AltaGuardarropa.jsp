@@ -52,13 +52,15 @@ input {
 				</tr>
 				</c:if>
 				<tr>
-					<td colspan="3"><input type="submit" value="Execute" /></td>
+					<td colspan="3"><input type="submit" class="btn btn-dark" value="Execute" /></td>
 				</tr>
 			</tbody>
 		</table>
 
 	</form:form>
 	<div>
+	<br/>
+	<br/>
 				<b><a class="text-muted" href="/QueMePongoWebMVC/menu.htm">Back</a></b>
 	</div>
 </body>

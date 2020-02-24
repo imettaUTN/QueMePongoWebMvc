@@ -70,10 +70,12 @@ public class Evento  implements Serializable{
 	@Column(name = "FrecuenciaEvt")
 	private int frecuencia;
 	
+	private int  tipoEvt;
+	
 	/*
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CodTipoEvento")
-	private TipoEvento tipoEvt;
+	
 	*/
 	
 	@Transient

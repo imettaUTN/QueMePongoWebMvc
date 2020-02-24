@@ -160,7 +160,7 @@ input {
 					<div class="input-group">
 						<input type="submit"
 							style="width: 100%; padding: 6px 10px; margin: 8px 0; box-sizing: border-box;"
-							value="Aceptar" class="text-center" />
+							value="Aceptar" class="btn btn-dark" />
 					</div>
 				</div>
 			</div>

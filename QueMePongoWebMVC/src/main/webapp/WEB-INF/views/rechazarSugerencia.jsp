@@ -173,7 +173,7 @@ input {
 					<div class="input-group">
 						<input type="submit"
 							style="width: 100%; padding: 6px 10px; margin: 8px 0; box-sizing: border-box;"
-							value="Rechazar" class="text-center" />
+							value="Rechazar" class="btn btn-dark" />
 					</div>
 				</div>
 			</div>

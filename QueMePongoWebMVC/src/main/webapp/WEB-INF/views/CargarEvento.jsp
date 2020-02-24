@@ -42,14 +42,23 @@ input {
 					<td><input type="text" name="fecha" class="form-control"></td>
 					<td><form:errors path="fecha" cssClass="campoConError" /></td>
 				</tr>
+					<tr>
+					<td class="text-center text-uppercase">tipo evento:</td>
+					<td><form:select path="tipoEvt" class="form-control">
+							<form:options items="${tiposEventos}" itemValue="codTipoEvento"
+								itemLabel="descripcion"></form:options>
+						</form:select></td>
+				</tr>
 				<tr>
-					<td colspan="3"><input type="submit" value="Execute" /></td>
+					<td colspan="3"><input type="submit" class="btn btn-dark" value="Execute" /></td>
 				</tr>
 			</tbody>
 		</table>
 
 	</form:form>
 	<div>
+	<br/>
+	<br/>
 				<b><a class="text-muted" href="/QueMePongoWebMVC/menu.htm">Back</a></b>
 	</div>
 </body>

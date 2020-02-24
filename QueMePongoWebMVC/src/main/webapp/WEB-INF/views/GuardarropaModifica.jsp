@@ -47,7 +47,7 @@ input {
 					<td><form:errors path="compartido" cssClass="campoConError"
 							readonly /></td>
 				<tr>
-					<td colspan="3"><input type="submit" value="Execute" /></td>
+					<td colspan="3"><input type="submit" class="btn btn-dark" value="Execute" /></td>
 				</tr>
 			</tbody>
 		</table>

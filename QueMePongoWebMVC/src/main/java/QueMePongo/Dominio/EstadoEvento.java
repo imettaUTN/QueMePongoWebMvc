@@ -3,6 +3,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import QueMePongo.DAO.JPAUtil;
+
 
 @Entity
 @Table(name = "EstadoEvento")
@@ -42,5 +44,10 @@ public class EstadoEvento  implements Serializable{
 	
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	public static EstadoEvento BuscarPorId(int id) {
+		JPAUtil trn = new JPAUtil();
+		return trn.transaccion().estados().buscarPorId(id);
 	}
 }
